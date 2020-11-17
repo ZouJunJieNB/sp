@@ -1,3 +1,29 @@
-body{
-    margin: 0px;
+html,
+body,
+#app,
+.home {
+  height: 100%;
+  background: #f8f8f8;
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/**
+ *  flex布局
+ */
+.flex {
+  display: flex;
+}
+.flex-sb {
+  .flex;
+  justify-content: space-between;
+}
+.flex-c {
+  .flex;
+  flex-direction: column;
+}
+.f1 {
+  flex: 1;
 }

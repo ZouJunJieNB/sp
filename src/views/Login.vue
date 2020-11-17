@@ -60,9 +60,22 @@ export default {
         this.$message.error("账号或密码错误");
         return;
       }
-      this.$http.get("/api/asdgsda", { name: "", paw: "" }).then((res) => {
-        console.log(res);
-      });
+      // this.$http.get("/api/asdgsda", { name: "", paw: "" }).then((res) => {
+      //   console.log(res);
+      // });
+
+      let user = {
+        "username":"zhangsan",
+        "password":"123",
+        "role":["admin","manager"],
+        "menu":[
+          {"menuName":"项目管理","menuNngName":"project","href":"/project","icon":"www.www"},
+          {"menuName":"生产管理","menuNngName":"project","href":"/project","icon":"www.www"},
+          {"menuName":"在线采购","menuNngName":"project","href":"/project","icon":"www.www"},
+          {"menuName":"我的页面","menuNngName":"project","href":"/project","icon":"www.www"}
+        ]
+      }
+      localStorage.setItem("user", user);
       localStorage.setItem("token", "123");
       this.$router.push("/home");
     },
