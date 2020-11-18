@@ -65,19 +65,238 @@ export default {
       // });
 
       let user = {
-        "username":"zhangsan",
-        "password":"123",
-        "role":["admin","manager"],
-        "menu":[
-          {"menuName":"项目管理","menuNngName":"project","href":"/project","icon":"www.www"},
-          {"menuName":"生产管理","menuNngName":"project","href":"/project","icon":"www.www"},
-          {"menuName":"在线采购","menuNngName":"project","href":"/project","icon":"www.www"},
-          {"menuName":"我的页面","menuNngName":"project","href":"/project","icon":"www.www"}
-        ]
-      }
-      localStorage.setItem("user", user);
+      
+        username: "zhangsan",
+        password: "123",
+        role: ["admin", "manager"],
+        menu: [
+          {
+            id:"1",
+            menuName: "项目管理",
+            menuNngName: "project",
+            href: "/project",
+            icon: "www.www",
+            children: [
+              {
+                 id:"1-1",
+                menuName: "项目启动",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              },
+              { id:"1-2",
+                menuName: "项目预算",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+                children: [
+                  {
+                     id:"1-2-1",
+                    menuName: "设备清单",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"1-2-2",
+                    menuName: "原料清单",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"1-2-3",
+                    menuName: "人员准备",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"1-2-4",
+                    menuName: "资金准备",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"1-2-5",
+                    menuName: "生成项目预算",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"1-2-6",
+                    menuName: "商务条款",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  }
+                ]
+              },
+              {
+                 id:"1-3",
+                menuName: "项目执行",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+                children: [
+                  { id:"1-3-1",
+                    menuName: "进度管理",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  { id:"1-3-2",
+                    menuName: "SAT管理",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                     id:"1-3-3",
+                    menuName: "安装管理",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                     id:"1-3-4",
+                    menuName: "FAT管理",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                     id:"1-3-5",
+                    menuName: "人员培训",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"1-3-6",
+                    menuName: "验收管理",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                ],
+              },
+              {
+                 id:"1-4",
+                menuName: "我的项目",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              }
+            ]
+          },
+          {
+             id:"2",
+            menuName: "生产管理",
+            menuNngName: "project",
+            href: "/project",
+            icon: "www.www",
+            children: [
+              {
+                 id:"2-1",
+                menuName: "生产信息看板",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              },
+              {
+                id:"2-2",
+                menuName: "质量监控看板",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              },
+              {
+                id:"2-3",
+                menuName: "设备监控看板",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              },
+              {
+                id:"2-4",
+                menuName: "生产工艺问题解决",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              }
+            ],
+          },
+          {
+            id:"3",
+            menuName: "在线采购",
+            menuNngName: "project",
+            href: "/project",
+            icon: "www.www",
+            children: [
+              {
+                id:"3-1",
+                menuName: "分类浏览",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+              },
+              {
+                 id:"3-2",
+                menuName: "订单列表",
+                menuNngName: "project",
+                href: "/project",
+                icon: "www.www",
+                children: [
+                  {
+                     id:"3-2-1",
+                    menuName: "执行订单",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                     id:"3-2-2",
+                    menuName: "历史订单",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                ]
+              },
+            ],
+          },
+          {
+             id:"4",
+            menuName: "我的页面",
+            menuNngName: "project",
+            href: "/project",
+            icon: "www.www",
+             children: [
+                  {
+                    id:"4-1",
+                    menuName: "账户管理",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                  {
+                    id:"4-2",
+                    menuName: "会员等级",
+                    menuNngName: "project",
+                    href: "/project",
+                    icon: "www.www",
+                  },
+                ]
+          },
+        ],
+      };
+      console.log(user)
+      localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", "123");
-      this.$router.push("/home");
+      this.$router.push("/tabs");
     },
   },
 };

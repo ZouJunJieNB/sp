@@ -5,24 +5,24 @@ import Home from "../views/Home.vue";
 Vue.use(VueRouter);
 
 const routes = [{
-        path: "/",
-        name: "home",
+    path: "/",
+    name: "home",
+    component: () =>
+        import("@/views/Home"),
+    children: [{
+        path: "/tabs",
+        name: "tabs",
         component: () =>
-            import ("@/views/Home"),
-        children: [{
-            path: "/tabs",
-            name: "tabs",
-            component: () =>
-                import ("@/views/Tabs"),
-        }, ],
-    },
+            import("@/views/Tabs"),
+    },],
+},
 
-    {
-        path: "/login",
-        name: "login",
-        component: () =>
-            import ("@/views/Login"),
-    },
+{
+    path: "/login",
+    name: "login",
+    component: () =>
+        import("@/views/Login"),
+},
 ];
 
 const router = new VueRouter({

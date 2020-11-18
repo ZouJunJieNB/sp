@@ -1,8 +1,8 @@
 <template>
   <el-container class="home">
     <el-header><Nav></Nav></el-header>
-    <el-container class="flex f1">
-      <el-aside width="200px" style="padding-top: 10px"><Menu></Menu></el-aside>
+    <el-container style="margin-top:0.5%;" class="flex f1">
+      <el-aside width="14%" style="padding-top: 10px"><Menu></Menu></el-aside>
       <el-main><router-view></router-view></el-main>
     </el-container>
   </el-container>
@@ -23,7 +23,7 @@ export default {
 </script>
 <style scoped>
 .home {
-  padding-left: 10px;
+  padding-left: 1%;
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;

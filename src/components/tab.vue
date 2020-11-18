@@ -40,6 +40,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .tab-item {
+  box-shadow:0px 0px 2px rgb(177, 167, 167);
   border: 1px solid #f2f2f2;
   background: #fff;
   border-radius: 15px;
