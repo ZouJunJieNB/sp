@@ -8,8 +8,8 @@
       <template v-for="(item) in menuList">
         <el-submenu v-if="item.children&&item.children.length>0" :key="item.id" :index="item.id">
           <template  slot="title">
-            <i class="el-icon-location"></i>
-            <span>{{item.menuName}}</span>
+            <i class="el-icon-location" style="color:#fff"></i>
+            <span  style="font-size:16px;margin-left:10px;">{{item.menuName}}</span>
           </template>
           <menu-sun :menuList="item.children"/> 
         </el-submenu>
@@ -32,8 +32,54 @@ export default {
 };
 </script>
 
-<style lang="less">
-.el-submenu {
-  background:transparent
+<style lang="less" >
+.el-menu {
+  background: transparent !important;
+}
+.el-submenu{
+  background: transparent !important;
+}
+.el-submenu .el-menu-item {
+  padding: 0;
+  font-size: 15px;
+  margin-left: 30px;
+  min-width: 0;
+}
+
+
+.el-menu-item:link,
+.el-menu-item:visited,
+.el-menu-item:hover,
+.el-menu-item:active {
+  background: #f8f8f8;
+  background-size: 101px 80px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+.el-menu-item.is-active {
+  color: #f8f8f8;
+  background:  #f8f8f8;
+  background-size: 101px 80px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  
+}
+
+
+.el-submenu__title .iconfont {
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  font-size: 20px;
+}
+.el-submenu__title .el-submenu__icon-arrow {
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  font-size: 16px;
+}
+
+.el-submenu__title:hover {
+  background: red;
 }
 </style>

@@ -18,24 +18,24 @@ export default {
       tabs: [
         [
           {
-            img: "https://cn.vuejs.org/images/logo.png",
+            img: require("../assets/index/1.png"),
             title: "项目管理",
             list: ["qqq", "www", "eee"],
           },
           {
-            img: "https://cn.vuejs.org/images/logo.png",
+            img:  require("../assets/index/2.png"),
             title: "生产管理",
             list: ["qqq", "www", "eee"],
           },
         ],
         [
           {
-            img: "https://cn.vuejs.org/images/logo.png",
+            img:  require("../assets/index/3.png"),
             title: "在线采购",
             list: ["qqq", "www", "eee"],
           },
           {
-            img: "https://cn.vuejs.org/images/logo.png",
+            img:  require("../assets/index/4.png"),
             title: "项目管理",
             list: ["qqq", "www", "eee"],
           },

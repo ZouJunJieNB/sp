@@ -46,22 +46,22 @@ export default {
   margin-top: 20px;
 }
 
-.el-menu-item:link,
-.el-menu-item:visited,
-.el-menu-item:hover,
-.el-menu-item:active {
-  background: url(../../assets/menuxz.png) no-repeat center;
-  background-size: 101% 100%;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-}
-.el-menu-item .is-active {
-  color: #fff;
-  background: url(../../assets/menuxz.png) no-repeat center;
-  background-size: 101% 100%;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-}
+// .el-menu-item:link,
+// .el-menu-item:visited,
+// .el-menu-item:hover,
+// .el-menu-item:active {
+//   background: url(../../assets/menuxz.png) no-repeat center;
+//   background-size: 101% 100%;
+//   border-top-left-radius: 25px;
+//   border-bottom-left-radius: 25px;
+// }
+// .el-menu-item .is-active {
+//   color: #fff;
+//   background: url(../../assets/menuxz.png) no-repeat center;
+//   background-size: 101% 100%;
+//   border-top-left-radius: 25px;
+//   border-bottom-left-radius: 25px;
+// }
 
 .submenu {
   color: red;
