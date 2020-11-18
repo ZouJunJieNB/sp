@@ -1,5 +1,10 @@
 <template>
-  <div class="tab-item" :style="{ backgroundImage: 'url(' + img + ')' }">
+  <div
+    class="tab-item"
+    :style="{ backgroundImage: 'url(' + img + ')' }"
+    @mouseenter="StopRoll()"
+    @mouseleave="UpRoll()"
+  >
     <!--  -->
     <div class="img-list">
       <!-- img -->
@@ -13,7 +18,7 @@
       <div class="list">
         <ul>
           <li v-for="item in list" :key="item.id" style="color:#5B74B3">
-            <i class="el-icon-eleme"></i>{{ item }}
+            <i class="el-icon-eleme icon"></i>{{ item }}
           </li>
         </ul>
       </div>
@@ -21,10 +26,7 @@
     <!--  -->
     <div class="start" style="color:#5B74B3">
       <i class="el-icon-arrow-right"></i
-      ><i
-        class="el-icon-arrow-right"
-        style="font-weight:bold;"
-      ></i>
+      ><i class="el-icon-arrow-right" style="font-weight:bold;"></i>
       点击进入
       <i class="el-icon-arrow-left" style="font-weight:bold;"></i
       ><i class="el-icon-arrow-left"></i>
@@ -47,8 +49,23 @@ export default {
       default: [],
     },
   },
+  data() {
+    return {
+      isActive: false,
+    };
+  },
   mounted() {
     console.log(this.img);
+  },
+  methods: {
+    StopRoll() {
+      console.log(123);
+      this.isActive = true;
+    },
+    UpRoll() {
+      console.log(456);
+      this.isActive = false;
+    },
   },
 };
 </script>
@@ -64,6 +81,7 @@ export default {
   flex-direction: column;
   box-sizing: border-box;
   padding: 10px 10px 0;
+  transition: all 0.5s;
   .img-list {
     display: flex;
     height: 100%;
@@ -109,6 +127,15 @@ export default {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+}
+.tab-item:hover {
+  transform: scale(1.04);
+  .start {
+    transform: scale(1.1);
+  }
+  .icon:before {
+    content: "\e7a3";
   }
 }
 </style>

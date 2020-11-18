@@ -1,8 +1,7 @@
 <template>
-    <div class="memu">
-      <menu-sun :menuList="menus" />
-    </div>
- 
+  <div class="memu">
+    <menu-sun :menuList="menus" />
+  </div>
 </template>
 <script>
 import MenuSun from "@/components/layout/menuList.vue";
