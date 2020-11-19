@@ -55,15 +55,12 @@ export default {
     };
   },
   mounted() {
-    console.log(this.img);
   },
   methods: {
     StopRoll() {
-      console.log(123);
       this.isActive = true;
     },
     UpRoll() {
-      console.log(456);
       this.isActive = false;
     },
   },
@@ -74,8 +71,8 @@ export default {
   // box-shadow:0px 0px 2px rgb(177, 167, 167);
   // border: 1px solid #f2f2f2;
   // border-radius: 15px;
-  width: 100%;
-  height: 100%;
+  width: 98%;
+  height: 98%;
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;

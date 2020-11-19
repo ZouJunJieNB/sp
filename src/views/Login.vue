@@ -94,7 +94,7 @@ export default {
                      id:"1-2-1",
                     menuName: "设备清单",
                     menuNngName: "project",
-                    href: "/project",
+                    href: "/equipmentList",
                     icon: "www.www",
                   },
                   {
@@ -240,7 +240,7 @@ export default {
                 id:"3-1",
                 menuName: "分类浏览",
                 menuNngName: "project",
-                href: "/project",
+                href: "/typeBrowsing",
                 icon: "www.www",
               },
               {

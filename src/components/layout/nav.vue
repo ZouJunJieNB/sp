@@ -27,7 +27,7 @@
   width: 101%;
   margin-left: -1%;
   border-bottom: 1px solid #f2f2f2;
-  border-radius: 0px 0px 0px 10px;
+  border-radius: 0px 0px 0px 15px;
   align-items: center;
   background: linear-gradient(to right,#5E77B5,#93A7D9,#B6C6F1);
   .right {

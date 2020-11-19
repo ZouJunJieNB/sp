@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-menu default-active text-color="#fff" unique-opened>
+    <el-menu  :default-active="this.$router.path"         
+      router text-color="#fff" unique-opened>
       <template v-for="item in menuList">
         <el-submenu
           v-if="item.children && item.children.length > 0"
@@ -15,7 +16,7 @@
           </template>
           <menu-sun :menuList="item.children" />
         </el-submenu>
-        <el-menu-item v-else :key="item.id" :index="item.id">{{
+        <el-menu-item v-else :index="item.href">{{
           item.menuName
         }}</el-menu-item>
       </template>
