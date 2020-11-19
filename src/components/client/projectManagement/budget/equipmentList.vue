@@ -70,21 +70,23 @@
             <div style="width:100%;text-align:center;">
               <img class="detailImg" :src="equipment.photoId" />
             </div>
-            <el-col :span="10">供应商:</el-col>
-            <el-col :span="11">{{ equipment.supplierId }}</el-col>
-            <el-col :span="10">原料名称:</el-col>
-            <el-col :span="11">{{ equipment.materialNameCh }}</el-col>
-            <el-col :span="10">单价:</el-col>
-            <el-col :span="11" style="color:#5B74B3;font-weight:bold"
-              >$ {{ equipment.amount }}</el-col
-            >
-            <el-col :span="10">数量:</el-col>
-            <el-col
-              :span="11"
-              style="color:#5B74B3;font-weight:bold;font-size:18px;"
-              ><i class="el-icon-caret-left"></i>{{ equipment.count
-              }}<i class="el-icon-caret-right"></i
-            ></el-col>
+            <div style="width:70%;margin:auto">
+              <el-col :span="10">供应商:</el-col>
+              <el-col :span="11">{{ equipment.supplierId }}</el-col>
+              <el-col :span="10">原料名称:</el-col>
+              <el-col :span="11">{{ equipment.materialNameCh }}</el-col>
+              <el-col :span="10">单价:</el-col>
+              <el-col :span="11" style="color:#5B74B3;font-weight:bold"
+                >$ {{ equipment.amount }}</el-col
+              >
+              <el-col :span="10">数量:</el-col>
+              <el-col
+                :span="11"
+                style="color:#5B74B3;font-weight:bold;font-size:18px;"
+                ><i class="el-icon-caret-left"></i>{{ equipment.count
+                }}<i class="el-icon-caret-right"></i
+              ></el-col>
+            </div>
           </el-col>
         </div>
 
@@ -351,7 +353,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-
 .equipment {
   width: 90%;
   height: 100%;
@@ -371,14 +372,13 @@ export default {
   }
   .equipmentList {
     .detailImg {
-      max-width: 85%;
-      max-height: 10%;
+      width: 80%;
+      height: 30%;
       border-radius: 15px;
       margin-bottom: 1%;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
     }
     .el-col {
-      text-align: none;
       height: 9%;
     }
     .el-col-10 {
@@ -414,8 +414,8 @@ export default {
     margin-left: 2.5%;
     display: inline-block;
     .detailImg {
-      max-width: 75%;
-      max-height: 10%;
+      width: 80%;
+      height: 30%;
       border-radius: 15px;
       margin-bottom: 10%;
     }
@@ -469,11 +469,9 @@ export default {
 .el-row {
   margin: -1%;
   height: 101%;
-
 }
 .el-col {
   height: 100%;
   border-radius: 4px;
 }
-
 </style>

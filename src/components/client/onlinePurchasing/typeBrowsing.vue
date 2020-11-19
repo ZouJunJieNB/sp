@@ -66,16 +66,38 @@
                 ></el-col
               >
             </div>
-              <el-pagination
-                background
-                layout="prev, pager, next"
-                :total="1000"
-              >
-              </el-pagination>
+
+            <el-pagination background layout="prev, pager, next" :total="1000">
+            </el-pagination>
           </div>
         </el-col>
       </el-col>
-      <el-col class="body-right-col" :span="6"> </el-col>
+      <el-col class="body-right-col" :span="6">
+        <div class="equipment">
+          <div class="equipment-head">
+            <el-col style="background:#4f6edb;color:#fff" :span="12">
+              配套备件
+            </el-col>
+            <el-col style="color:#4f6edb" :span="12">
+              已购清单
+            </el-col>
+          </div>
+          <div
+            class="equipment-body"
+            v-for="equipment in equipmentList"
+            :key="equipment.id"
+          >
+            <el-col style="height:80%" :span="24">
+              <el-col style="height:100%" :span="14">
+                <div style="width:100%;text-align:center;">
+                  <img class="detailImg" :src="equipment.photoId" />
+                </div>
+              </el-col>
+            </el-col>
+            <el-col style="height:20%" :span="24"> </el-col>
+          </div>
+        </div>
+      </el-col>
     </el-col>
   </el-row>
 </template>
@@ -300,6 +322,37 @@ export default {
           ],
         },
       ],
+      equipmentList: [
+        // {
+        //   photoId:
+        //     "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
+        //   supplierId: "华东供应商",
+        //   amount: "100000.00",
+        //   materialNameCh: "木板子",
+        //   materialNameEn: "mubanzi",
+        //   count: "2",
+        // },
+
+        {
+          photoId:
+            "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2320241958,1164167167&fm=26&gp=0.jpg",
+          supplierId: "华东供应商",
+          amount: "100000.00",
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
+          count: "2",
+        },
+
+        {
+          photoId:
+            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
+          supplierId: "华东供应商",
+          amount: "100000.00",
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
+          count: "2",
+        },
+      ],
     };
   },
   methods: {
@@ -316,32 +369,33 @@ export default {
 }
 .head-col {
   height: 25%;
+  margin-bottom: 10px;
+  min-height: 210px;
   .haad-left-col {
     height: 100%;
 
     ul {
-      margin-top: 9%;
+      height: 100%;
       width: 100%;
+      padding-top: 8px;
+      box-sizing: border-box;
       letter-spacing: 2px; //间距
-      li {
-        margin-left: 20%;
-        margin-bottom: 10px;
-        width: 80%;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        -webkit-border-top-left-radius: 10px;
-        -webkit-border-bottom-left-radius: 10px;
-        background: cornsilk;
 
+      li {
+        margin-left: 15px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20%;
+        border-radius: 10px 0 0 10px;
         color: #fff;
         background: #4f6edb;
       }
       .active {
+        margin-left: 0;
         color: #4f6edb;
         background: #fff;
-        width: 85%;
-        margin-left: 15%;
       }
     }
   }
@@ -351,7 +405,7 @@ export default {
       border-radius: 10px;
       background: #fff;
       width: 100%;
-      height: 88%;
+      height: 100%;
       .carrier {
         margin: auto;
         overflow-x: scroll;
@@ -377,7 +431,7 @@ export default {
         .typeItem {
           background: #4f6edb;
           min-width: 100px;
-          height: 140px;
+          height: 80%;
           margin-left: 3%;
           margin-top: 1.5%;
           display: inline-block;
@@ -392,7 +446,7 @@ export default {
   .body-left-col {
     height: 100%;
     .detail {
-      width: 100%;
+      width: 99%;
       height: 100%;
       background: #fff;
       border-radius: 15px;
@@ -435,7 +489,38 @@ export default {
   }
   .body-right-col {
     height: 100%;
-    background: cornflowerblue;
+    .equipment {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      // margin-top: 5%;
+      .equipment-head {
+        margin-bottom: 2%;
+        border-radius: 10px 10px 0px 0px;
+        height: 8%;
+        text-align: center;
+        line-height: 200%;
+        border-bottom: 1px solid #4f6edb;
+        .el-col {
+          height: 100%;
+          // background: #4f6edb;
+        }
+      }
+      .equipment-body {
+        height: 30%;
+        width: 100%;
+        background: #4f6edb;
+        .detailImg {
+          width: 90%;
+          height: 90%;
+
+          //   max-width: 80%;
+          //   max-height: 10%;
+          border-radius: 15px;
+          margin-bottom: 10%;
+        }
+      }
+    }
   }
 }
 </style>
