@@ -65,7 +65,7 @@
             <div style="width: 100%; text-align: center">
               <img class="detailImg" :src="equipment.photoId" />
             </div>
-            <div style="width: 70%">
+            <div style="width: 70%;margin:auto">
               <el-col :span="10">供应商:</el-col>
               <el-col :span="11">{{ equipment.supplierId }}</el-col>
               <el-col :span="10">原料名称:</el-col>
@@ -370,9 +370,10 @@ export default {
     overflow-y: scroll;
   }
   .equipmentList {
+ 
     box-sizing: border-box;
     .detailImg {
-      width: 80%;
+      width: 60%;
       height: 30%;
       border-radius: 15px;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
@@ -412,7 +413,7 @@ export default {
     display: inline-block;
     .detailImg {
       width: 80%;
-      height: 30%;
+      height: 40%;
       border-radius: 15px;
       margin-bottom: 10%;
     }

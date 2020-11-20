@@ -387,7 +387,7 @@ export default {
 <style lang="less" scoped>
 .el-row {
   margin-top: 1%;
-  height: 95%;
+  height: 97%;
 }
 .head-col {
   height: 25%;

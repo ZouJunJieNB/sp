@@ -60,14 +60,14 @@
               fontSize: '16px',
               backgroundColor: '#qua',
             }"
-            :data="tableData"
+            :data="panelData"
             stripe
             style="width: 90%;margin:auto"
           >
-            <el-table-column prop="date" label="操作面板"> </el-table-column>
-            <el-table-column prop="name" label="要求"> </el-table-column>
-            <el-table-column prop="address" label="检验图片"> </el-table-column>
-            <el-table-column prop="address" label="检验通过"> </el-table-column>
+            <el-table-column prop="panel" label="操作面板"> </el-table-column>
+            <el-table-column prop="requirement" label="要求"> </el-table-column>
+            <el-table-column prop="img" label="检验图片"> </el-table-column>
+            <el-table-column prop="adopt" label="检验通过"> </el-table-column>
           </el-table>
         </div>
       </el-col>
