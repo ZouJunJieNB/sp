@@ -149,8 +149,8 @@ export default {
                   },
                   { id:"1-3-2",
                     menuName: "SAT管理",
-                    menuNngName: "project",
-                    href: "/project",
+                    menuNngName: "sat",
+                    href: "/sat",
                     icon: "www.www",
                   },
                   {

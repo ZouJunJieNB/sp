@@ -34,12 +34,7 @@ const routes = [
                 name: "sat",
                 component: () =>
                     import("@/components/client/projectManagement/sat"),
-            },
-            {
-                path: "*",
-                name: "404",
-                component: () => import("../views/404.vue"),
-            },
+            }
         ]
     },
 
@@ -50,7 +45,13 @@ const routes = [
         meta: {
             withoutLayout: true,
         },
-    },
+    }
+    ,
+            {
+                path: "*",
+                name: "404",
+                component: () => import("../views/404.vue"),
+            },
 ]
 
 const router = new VueRouter({
