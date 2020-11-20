@@ -12,9 +12,7 @@
       <div class="nav-item">
         <el-avatar icon="el-icon-user-solid"></el-avatar>
       </div>
-       <div class="nav-item">
-          用户名
-      </div>
+      <div class="nav-item">用户名</div>
     </div>
   </div>
 </template>
@@ -24,16 +22,14 @@
   // 里面两个div向左右靠齐
   justify-content: space-between;
   padding: 10px;
-  width: 101%;
-  margin-left: -1%;
   border-bottom: 1px solid #f2f2f2;
   border-radius: 0px 0px 0px 15px;
   align-items: center;
-  background: linear-gradient(to right,#5E77B5,#93A7D9,#B6C6F1);
+  background: linear-gradient(to right, #5e77b5, #93a7d9, #b6c6f1);
   .right {
     display: flex;
     align-items: center;
-    color:#fff;
+    color: #fff;
     margin-right: 2%;
   }
   .nav-item {

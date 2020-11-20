@@ -1,99 +1,93 @@
 <template>
-  <el-row>
+  <el-row style="box-sizing: border-box; padding-right: 10px">
     <el-col :span="18" class="left">
-      <el-col :span="23" style="height:27%;margin-bottom:2%;margin-left:3%">
-        <div style="widht:100%;height:100%;overflow-x: scroll;" class="flex">
-          <div
-            :class="[
-              type.isJoin ? 'typeItemActive' : 'typeItemDefault',
-              'typeItem',
-            ]"
-            v-for="type in MaterialTypeList"
-            :key="type.id"
-          >
-            <div class="typeText">{{ type.materialTypeNameCh }}</div>
-            <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
-          </div>
+      <div style="widht: 100%; height: 190px; overflow-x: scroll" class="flex">
+        <div
+          :class="[
+            type.isJoin ? 'typeItemActive' : 'typeItemDefault',
+            'typeItem',
+          ]"
+          v-for="type in MaterialTypeList"
+          :key="type.id"
+        >
+          <div class="typeText">{{ type.materialTypeNameCh }}</div>
+          <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
         </div>
-      </el-col>
-      <el-col :span="24" style="height:70%;">
-        <div class="tpyeDetails">
-          <el-col :span="24" style="height:10%">
-            <h3 class="title">彩膜原料</h3>
-          </el-col>
-          <el-col :span="24" style="height:80%">
-            <div
-              class="detailItem"
-              v-for="detail in MaterialTypeDetails"
-              :key="detail.id"
-            >
-              <img class="detailImg" :src="detail.photoId" />
-              <el-col :span="10">供应商:</el-col>
-              <el-col :span="12">{{ detail.supplierId }}</el-col>
-              <el-col :span="10">型号:</el-col>
-              <el-col :span="12">{{ detail.model }}</el-col>
-              <el-col :span="10">单价:</el-col>
-              <el-col :span="12">{{ detail.amount }}</el-col>
-              <el-col :span="10">缩写:</el-col>
-              <el-col :span="12">{{ detail.materialAbridge }}</el-col>
-              <el-col
-                :span="24"
-                v-for="typeParam in detail.typeParams"
-                :key="typeParam.id"
-              >
-                <el-col :span="10">{{ typeParam.param }}:</el-col>
-                <el-col :span="12">{{ typeParam.value }}</el-col>
-              </el-col>
-
-              <el-col :span="2" :offset="10">
-                <el-button class="detailBtn" size="medium" type="primary" round
-                  >加入清单</el-button
-                ></el-col
-              >
-            </div>
-          </el-col>
-        </div>
-      </el-col>
-    </el-col>
-    <el-col :span="6">
-      <div class="equipment">
-        <el-col style="height:7%" :span="24">
-          <h3 class="title">材料清单</h3>
+      </div>
+      <div class="tpyeDetails">
+        <el-col :span="24" style="height: 10%">
+          <h3 class="title">彩膜原料</h3>
         </el-col>
+        <el-col :span="24" style="height: 80%">
+          <div
+            class="detailItem"
+            v-for="detail in MaterialTypeDetails"
+            :key="detail.id"
+          >
+            <img class="detailImg" :src="detail.photoId" />
+            <el-col :span="10">供应商:</el-col>
+            <el-col :span="12">{{ detail.supplierId }}</el-col>
+            <el-col :span="10">型号:</el-col>
+            <el-col :span="12">{{ detail.model }}</el-col>
+            <el-col :span="10">单价:</el-col>
+            <el-col :span="12">{{ detail.amount }}</el-col>
+            <el-col :span="10">缩写:</el-col>
+            <el-col :span="12">{{ detail.materialAbridge }}</el-col>
+            <el-col
+              :span="24"
+              v-for="typeParam in detail.typeParams"
+              :key="typeParam.id"
+            >
+              <el-col :span="10">{{ typeParam.param }}:</el-col>
+              <el-col :span="12">{{ typeParam.value }}</el-col>
+            </el-col>
+
+            <el-col :span="2" :offset="10">
+              <el-button class="detailBtn" size="medium" type="primary" round
+                >加入清单</el-button
+              ></el-col
+            >
+          </div>
+        </el-col>
+      </div>
+    </el-col>
+    <el-col :span="6" style="height: 100%">
+      <div class="equipment">
+        <div>
+          <h3 class="title">材料清单</h3>
+        </div>
         <div class="equipmentScroll">
-          <el-col
+          <div
             class="equipmentList"
-            style="height:50%"
             v-for="equipment in equipmentList"
             :key="equipment.id"
           >
-            <div style="width:100%;text-align:center;">
+            <div style="width: 100%; text-align: center">
               <img class="detailImg" :src="equipment.photoId" />
             </div>
-            <div style="width:70%;margin:auto">
+            <div style="width: 70%">
               <el-col :span="10">供应商:</el-col>
               <el-col :span="11">{{ equipment.supplierId }}</el-col>
               <el-col :span="10">原料名称:</el-col>
               <el-col :span="11">{{ equipment.materialNameCh }}</el-col>
               <el-col :span="10">单价:</el-col>
-              <el-col :span="11" style="color:#5B74B3;font-weight:bold"
+              <el-col :span="11" style="color: #5b74b3; font-weight: bold"
                 >$ {{ equipment.amount }}</el-col
               >
               <el-col :span="10">数量:</el-col>
               <el-col
                 :span="11"
-                style="color:#5B74B3;font-weight:bold;font-size:18px;"
+                style="color: #5b74b3; font-weight: bold; font-size: 18px"
                 ><i class="el-icon-caret-left"></i>{{ equipment.count
                 }}<i class="el-icon-caret-right"></i
               ></el-col>
             </div>
-          </el-col>
+          </div>
         </div>
-
-        <el-col style="height:10%;text-align:center">
+        <div style="text-align: center">
           <el-divider></el-divider>
-          <h2 style="color:#5B74B3;">总价: $ 200000.00</h2>
-        </el-col>
+          <h2 style="color: #5b74b3">总价: $ 200000.00</h2>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -318,15 +312,15 @@ export default {
         },
       ],
       equipmentList: [
-        // {
-        //   photoId:
-        //     "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
-        //   supplierId: "华东供应商",
-        //   amount: "100000.00",
-        //   materialNameCh: "木板子",
-        //   materialNameEn: "mubanzi",
-        //   count: "2",
-        // },
+        {
+          photoId:
+            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
+          supplierId: "华东供应商",
+          amount: "100000.00",
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
+          count: "2",
+        },
 
         {
           photoId:
@@ -353,29 +347,34 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.left {
+  box-sizing: border-box;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
 .equipment {
-  width: 90%;
   height: 100%;
   background: #fff;
-  margin-left: 3%;
-  margin-top: 5%;
-  border-radius: 25px;
+  border-radius: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   .title {
     letter-spacing: 2px; //间距
-    margin-top: 5%;
-    margin-left: 5%;
   }
   .equipmentScroll {
-    max-height: 80%;
     width: 100%;
+    flex: 1;
     overflow-y: scroll;
   }
   .equipmentList {
+    box-sizing: border-box;
     .detailImg {
       width: 80%;
       height: 30%;
       border-radius: 15px;
-      margin-bottom: 1%;
       box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
     }
     .el-col {
@@ -387,26 +386,24 @@ export default {
     }
     .el-col-11 {
       font-weight: lighter;
-      //   margin-left: 2%;
     }
   }
 }
 
 .tpyeDetails {
-  width: 90%;
-  height: 104%;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 10px;
   background: #fff;
-  margin-left: 3%;
-  border-radius: 25px;
+  border-radius: 15px;
   .title {
     letter-spacing: 2px; //间距
-    margin-top: 3%;
-    margin-left: 3%;
   }
   .detailItem {
     .detailBtn {
       box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-      margin-top: 50%;
     }
     width: 30%;
     height: 90%;
@@ -455,8 +452,7 @@ export default {
 .typeItem {
   min-width: 100px;
   height: 180px;
-  margin-right: 3%;
-  margin-top: 2%;
+  margin-right: 10px;
   display: inline-block;
   border-radius: 5px;
 }
@@ -467,8 +463,7 @@ export default {
   background: #d8d8d8;
 }
 .el-row {
-  margin: -1%;
-  height: 101%;
+  height: 100%;
 }
 .el-col {
   height: 100%;
