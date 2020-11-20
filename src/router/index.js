@@ -15,18 +15,24 @@ const routes = [{
         component: () =>
             import("@/views/Tabs"),
     }, {
-        // 设备清单
+        // 客户: 设备清单
         path: "/equipmentList",
         name: "equipmentList",
         component: () =>
             import("@/components/client/projectManagement/budget/equipmentList"),
     }
     , {
-        // 分类浏览
+        // 客户: 分类浏览
         path: "/typeBrowsing",
         name: "typeBrowsing",
         component: () =>
             import("@/components/client/onlinePurchasing/typeBrowsing"),
+    }, {
+        // 客户: SAT管理
+        path: "/sat",
+        name: "sat",
+        component: () =>
+            import("@/components/client/projectManagement/sat"),
     }
 ]
 },

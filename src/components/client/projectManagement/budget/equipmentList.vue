@@ -461,7 +461,7 @@ export default {
   border-radius: 5px;
 }
 .typeItemActive {
-  background: #4f6edb;
+  background: #5E77B5;
 }
 .typeItemDefault {
   background: #d8d8d8;

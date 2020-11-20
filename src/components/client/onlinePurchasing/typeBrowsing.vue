@@ -56,8 +56,8 @@
               </el-col>
 
               <el-col :span="2">
-                <el-button class="detailBtn" size="medium" type="primary" round
-                  >加入清单</el-button
+                <el-button class="detailBtn"style="background:#5e77b5" size="medium" type="primary" round
+                  >加入订单</el-button
                 ></el-col
               >
               <el-col :span="2" :offset="8">
@@ -67,19 +67,19 @@
               >
             </div>
 
-            <el-pagination background layout="prev, pager, next" :total="1000">
-            </el-pagination>
+            <!-- <el-pagination background layout="prev, pager, next" :total="1000">
+            </el-pagination> -->
           </div>
         </el-col>
       </el-col>
       <el-col class="body-right-col" :span="6">
         <div class="equipment">
           <div class="equipment-head">
-            <el-col style="background:#4f6edb;color:#fff" :span="12">
+            <el-col style="background:#5E77B5;color:#fff" :span="12">
               配套备件
             </el-col>
-            <el-col style="color:#4f6edb" :span="12">
-              已购清单
+            <el-col style="color:#5E77B5" :span="12">
+              已购订单
             </el-col>
           </div>
           <div
@@ -87,14 +87,35 @@
             v-for="equipment in equipmentList"
             :key="equipment.id"
           >
-            <el-col style="height:80%" :span="24">
-              <el-col style="height:100%" :span="14">
+            <el-col style="height:70%" :span="24">
+              <!-- 左图片 -->
+              <el-col style="height:100%" :span="10">
                 <div style="width:100%;text-align:center;">
                   <img class="detailImg" :src="equipment.photoId" />
                 </div>
               </el-col>
+              <!-- 右文字 -->
+              <el-col style="height:100%" class="equipment-text" :span="14">
+                <el-col :span="10">设备名称:</el-col>
+                <el-col :span="12">{{ equipment.materialNameCh }}</el-col>
+                <el-col :span="10">供应商:</el-col>
+                <el-col :span="12">{{ equipment.supplierId }}</el-col>
+                <el-col :span="10">单价:</el-col>
+                <el-col :span="12" style="color:#5e77b5">$ {{ equipment.amount }}</el-col>
+              </el-col>
             </el-col>
-            <el-col style="height:20%" :span="24"> </el-col>
+            <el-col style="height:30%;margin-top:2px" :span="24">
+              <el-col :span="2":offset="4">
+                <el-button style="background:#5e77b5"  size="small" type="primary" round
+                  >加入订单</el-button
+                ></el-col
+              >
+              <el-col :span="2" :offset="8">
+                <el-button  size="small" type="defalut" round
+                  >查看详情</el-button
+                ></el-col
+              >
+            </el-col>
           </div>
         </div>
       </el-col>
@@ -237,7 +258,7 @@ export default {
         {
           id: "1236",
           materialTypeCode: "Code",
-          materialTypeNameCh: "稳定剂",
+          materialTypeNameCh: "稳订剂",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -323,15 +344,16 @@ export default {
         },
       ],
       equipmentList: [
-        // {
-        //   photoId:
-        //     "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
-        //   supplierId: "华东供应商",
-        //   amount: "100000.00",
-        //   materialNameCh: "木板子",
-        //   materialNameEn: "mubanzi",
-        //   count: "2",
-        // },
+        {
+          photoId:
+            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
+          supplierId: "华东供应商",
+          amount: "100000.00",
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
+          count: "2",
+        },
+        
 
         {
           photoId:
@@ -365,7 +387,7 @@ export default {
 <style lang="less" scoped>
 .el-row {
   margin-top: 1%;
-  height: 98%;
+  height: 95%;
 }
 .head-col {
   height: 25%;
@@ -390,11 +412,11 @@ export default {
         height: 20%;
         border-radius: 10px 0 0 10px;
         color: #fff;
-        background: #4f6edb;
+        background: #5e77b5;
       }
       .active {
         margin-left: 0;
-        color: #4f6edb;
+        color: #5e77b5;
         background: #fff;
       }
     }
@@ -429,7 +451,7 @@ export default {
           font-size: 60px;
         }
         .typeItem {
-          background: #4f6edb;
+          background: #5e77b5;
           min-width: 100px;
           height: 80%;
           margin-left: 3%;
@@ -493,23 +515,38 @@ export default {
       width: 100%;
       height: 100%;
       background: #fff;
+
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
       // margin-top: 5%;
       .equipment-head {
         margin-bottom: 2%;
         border-radius: 10px 10px 0px 0px;
-        height: 8%;
+        height: 7%;
         text-align: center;
-        line-height: 200%;
-        border-bottom: 1px solid #4f6edb;
+        line-height: 210%;
+        border-bottom: 1px solid #5e77b5;
         .el-col {
+          border-radius: 10px 10px 0px 0px;
           height: 100%;
-          // background: #4f6edb;
+          // background: #5E77B5;
         }
       }
       .equipment-body {
-        height: 30%;
+        height: 25%;
         width: 100%;
-        background: #4f6edb;
+        // background: #5e77b5;
+        border-bottom: 1px solid #5e77b5;
+        margin-top: 6%;
+        .equipment-text {
+          height: 100%;
+          .el-col {
+            margin-top: 1%;
+            height: 25%;
+            font-size: 15px;
+            // margin-left: 9%;
+          }
+        }
         .detailImg {
           width: 90%;
           height: 90%;
