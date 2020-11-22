@@ -100,8 +100,8 @@ export default {
                   {
                     id:"1-2-2",
                     menuName: "原料清单",
-                    menuNngName: "project",
-                    href: "/project",
+                    menuNngName: "nmd",
+                    href: "/nmd",
                     icon: "www.www",
                   },
                   {

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <el-menu  :default-active="this.$router.path"         
-      router text-color="#fff" unique-opened>
+    <el-menu
+      :default-active="this.$router.path"
+      router
+      text-color="#fff"
+      unique-opened
+    >
       <template v-for="item in menuList">
         <el-submenu
           v-if="item.children && item.children.length > 0"
@@ -14,9 +18,43 @@
               item.menuName
             }}</span>
           </template>
-          <menu-sun :menuList="item.children" />
+          <template v-for="item1 in item.children">
+            <el-submenu
+              v-if="item1.children && item1.children.length > 0"
+              :key="item1.id"
+              :index="item1.id"
+            >
+              <template slot="title">
+                <i class="el-icon-location" style="color:#fff"></i>
+                <span style="font-size:16px;margin-left:10px;">{{
+                  item1.menuName
+                }}</span>
+              </template>
+              <template v-for="item2 in item1.children">
+                <el-submenu
+                  v-if="item2.children && item2.children.length > 0"
+                  :key="item2.id"
+                  :index="item2.id"
+                >
+                  <template slot="title">
+                    <i class="el-icon-location" style="color:#fff"></i>
+                    <span style="font-size:16px;margin-left:10px;">{{
+                      item2.menuName
+                    }}</span>
+                  </template>
+                  <!-- <menu-sun :menuList="item.children" /> -->
+                </el-submenu>
+                <el-menu-item v-else :key="item2.id" :index="item2.href">{{
+                  item2.menuName
+                }}</el-menu-item>
+              </template>
+            </el-submenu>
+            <el-menu-item v-else :key="item1.id" :index="item1.href">{{
+              item1.menuName
+            }}</el-menu-item>
+          </template>
         </el-submenu>
-        <el-menu-item v-else :index="item.href">{{
+        <el-menu-item v-else :key="item.id" :index="item.href">{{
           item.menuName
         }}</el-menu-item>
       </template>
