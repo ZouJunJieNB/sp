@@ -2,7 +2,7 @@
   <el-row style="box-sizing: border-box; padding-right: 10px">
     <el-col :span="18" class="left">
       <div
-        style="widht: 100%; height: 190px; min-height:10%; overflow-x: scroll"
+        style="widht: 100%; height: 190px; min-height: 10%; overflow-x: scroll"
         class="flex"
       >
         <div
@@ -16,6 +16,7 @@
               type.isJoin ? 'typeItemActive' : 'typeItemDefault',
               'itemBody',
             ]"
+            @click="onType(type)"
           >
             <div class="typeText">{{ type.materialTypeNameCh }}</div>
             <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
@@ -24,8 +25,16 @@
             <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
           </dv> -->
           </div>
-
-          <div class="itemBody">123</div>
+          <div v-if="activeChildren == type.id" class="flex">
+            <div
+              class="itemBody"
+              v-for="child in type.children"
+              :key="child.id"
+            >
+              <div class="typeText">{{ child.materialTypeNameCh }}</div>
+              <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="tpyeDetails">
@@ -79,7 +88,7 @@
             <div style="width: 100%; text-align: center">
               <img class="detailImg" :src="equipment.photoId" />
             </div>
-            <div style="width: 70%;margin:auto">
+            <div style="width: 70%; margin: auto">
               <el-col :span="10">供应商:</el-col>
               <el-col :span="11">{{ equipment.supplierId }}</el-col>
               <el-col :span="10">原料名称:</el-col>
@@ -110,9 +119,10 @@
 export default {
   data() {
     return {
+      activeChildren: 0,
       MaterialTypeList: [
         {
-          id: "1123",
+          id: "1",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -141,7 +151,7 @@ export default {
           ],
         },
         {
-          id: "1223",
+          id: "2",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -391,6 +401,10 @@ export default {
     };
   },
   methods: {
+    onType(type) {
+      if (type.id == this.activeChildren) return (this.activeChildren = 0);
+      this.activeChildren = type.id;
+    },
     showChildern(type, index) {
       if (type.children != null) {
         this.childIndex = index;
@@ -506,6 +520,7 @@ export default {
   height: 100%;
 }
 .typeItem {
+  display: flex;
   // width: 100%;
   // height: 180px;
   .itemBody {
