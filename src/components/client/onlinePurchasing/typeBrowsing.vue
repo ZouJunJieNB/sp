@@ -386,8 +386,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .el-row {
-  margin-top: 1%;
-  height: 90%;
+  // margin-top: 1%;
+  height: 100%;
 }
 .head-col {
   height: 25%;
@@ -464,7 +464,7 @@ export default {
   }
 }
 .body-col {
-  height: 75%;
+  height: 73%;
   .body-left-col {
     height: 100%;
     .detail {

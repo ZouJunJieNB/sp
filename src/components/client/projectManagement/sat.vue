@@ -280,10 +280,11 @@ export default {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-  margin-top: 1%;
-  height: 98%;
+  // margin-top: 1%;
+  height: 100%;
   .head-col {
     height: 8%;
+    margin-top: 1%;
     .head-col-switch {
       color: #5e77b5;
       font-size: 16px;
@@ -291,7 +292,7 @@ export default {
     }
   }
   .body-col {
-    height: 92%;
+    height: 90%;
     .body-left-col {
       height: 30%;
       margin-top: 3%;

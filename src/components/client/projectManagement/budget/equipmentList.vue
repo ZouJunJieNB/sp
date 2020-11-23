@@ -1,17 +1,31 @@
 <template>
   <el-row style="box-sizing: border-box; padding-right: 10px">
     <el-col :span="18" class="left">
-      <div style="widht: 100%; height: 190px; overflow-x: scroll" class="flex">
+      <div
+        style="widht: 100%; height: 190px; min-height:10%; overflow-x: scroll"
+        class="flex"
+      >
         <div
-          :class="[
-            type.isJoin ? 'typeItemActive' : 'typeItemDefault',
-            'typeItem',
-          ]"
-          v-for="type in MaterialTypeList"
+          class="typeItem"
+          v-for="(type, index) in MaterialTypeList"
           :key="type.id"
+          @click="showChildern(type, index)"
         >
-          <div class="typeText">{{ type.materialTypeNameCh }}</div>
-          <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
+          <div
+            :class="[
+              type.isJoin ? 'typeItemActive' : 'typeItemDefault',
+              'itemBody',
+            ]"
+          >
+            <div class="typeText">{{ type.materialTypeNameCh }}</div>
+            <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
+            <!-- <div v-if="childIndex == index" class="typeItemChil" :key="chil.id" v-for="chil in type.children">
+            <div class="typeText">{{ chil.materialTypeNameCh }}</div>
+            <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
+          </dv> -->
+          </div>
+
+          <div class="itemBody">123</div>
         </div>
       </div>
       <div class="tpyeDetails">
@@ -105,6 +119,26 @@ export default {
           isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
+          children: [
+            {
+              id: "11234",
+              materialTypeCode: "Code",
+              materialTypeNameCh: "彩膜崽崽",
+              materialTypeNameEn: "caimo",
+              isJoin: true,
+              abridge: "cm",
+              iconId: "www.www.cc",
+            },
+            {
+              id: "112344",
+              materialTypeCode: "Code",
+              materialTypeNameCh: "彩膜崽崽2",
+              materialTypeNameEn: "caimo",
+              isJoin: true,
+              abridge: "cm",
+              iconId: "www.www.cc",
+            },
+          ],
         },
         {
           id: "1223",
@@ -114,6 +148,17 @@ export default {
           isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
+          children: [
+            {
+              id: "11234",
+              materialTypeCode: "Code",
+              materialTypeNameCh: "彩膜崽崽",
+              materialTypeNameEn: "caimo",
+              isJoin: true,
+              abridge: "cm",
+              iconId: "www.www.cc",
+            },
+          ],
         },
         {
           id: "1233",
@@ -342,7 +387,17 @@ export default {
           count: "2",
         },
       ],
+      childIndex: "sb",
     };
+  },
+  methods: {
+    showChildern(type, index) {
+      if (type.children != null) {
+        this.childIndex = index;
+      } else {
+        this.$message.success("我没有崽崽");
+      }
+    },
   },
 };
 </script>
@@ -370,7 +425,6 @@ export default {
     overflow-y: scroll;
   }
   .equipmentList {
- 
     box-sizing: border-box;
     .detailImg {
       width: 60%;
@@ -392,6 +446,7 @@ export default {
 }
 
 .tpyeDetails {
+  height: 90%;
   width: 100%;
   flex: 1;
   box-sizing: border-box;
@@ -451,14 +506,27 @@ export default {
   height: 100%;
 }
 .typeItem {
-  min-width: 100px;
-  height: 180px;
-  margin-right: 10px;
-  display: inline-block;
-  border-radius: 5px;
+  // width: 100%;
+  // height: 180px;
+  .itemBody {
+    min-width: 100px;
+    height: 180px;
+    margin-right: 10px;
+    display: inline-block;
+    border-radius: 5px;
+  }
+  .typeItemChil {
+    // margin-top: 1px;
+    // min-width: 100%;
+    // height: 100%;
+    // margin-right: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    background: red;
+  }
 }
 .typeItemActive {
-  background: #5E77B5;
+  background: #5e77b5;
 }
 .typeItemDefault {
   background: #d8d8d8;

@@ -4,7 +4,7 @@
       <el-container>
         <el-header height="80"><Nav /></el-header>
         <el-container style="overflow: hidden; margin-top: 5px; height: 100%">
-          <el-aside width="180px"><Menu /></el-aside>
+          <el-aside width="220px"><Menu /></el-aside>
           <el-main>
             <router-view />
           </el-main>
