@@ -2,7 +2,7 @@
   <div id="app">
     <div v-if="!$route.meta.withoutLayout" class="app">
       <el-container>
-        <el-header height="80"><Nav /></el-header>
+        <el-header height="80px"><Nav /></el-header>
         <el-container style="overflow: hidden; margin-top: 5px; height: 100%">
           <el-aside width="220px"><Menu /></el-aside>
           <el-main>

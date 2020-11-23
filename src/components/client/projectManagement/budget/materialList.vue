@@ -19,10 +19,6 @@
           >
             <div class="typeText">{{ type.materialTypeNameCh }}</div>
             <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
-            <!-- <div v-if="childIndex == index" class="typeItemChil" :key="chil.id" v-for="chil in type.children">
-            <div class="typeText">{{ chil.materialTypeNameCh }}</div>
-            <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
-          </dv> -->
           </div>
           <div v-if="childIndex == index" class="flex">
             <div
@@ -125,16 +121,16 @@ export default {
         {
           id: "1",
           materialTypeCode: "Code",
-          materialTypeNameCh: "混料",
+          materialTypeNameCh: "稳定剂",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
           children: [
             {
               id: "11234",
               materialTypeCode: "Code",
-              materialTypeNameCh: "混料崽崽",
+              materialTypeNameCh: "稳定剂崽崽",
               materialTypeNameEn: "caimo",
               isJoin: true,
               abridge: "cm",
@@ -143,7 +139,7 @@ export default {
             {
               id: "112344",
               materialTypeCode: "Code",
-              materialTypeNameCh: "混料崽崽2",
+              materialTypeNameCh: "稳定剂崽崽2",
               materialTypeNameEn: "caimo",
               isJoin: true,
               abridge: "cm",
@@ -154,16 +150,16 @@ export default {
         {
           id: "2",
           materialTypeCode: "Code",
-          materialTypeNameCh: "挤出",
+          materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
-          isJoin: false,
+          isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
           children: [
             {
               id: "11234",
               materialTypeCode: "Code",
-              materialTypeNameCh: "挤出崽崽",
+              materialTypeNameCh: "彩膜崽崽",
               materialTypeNameEn: "caimo",
               isJoin: true,
               abridge: "cm",
@@ -174,7 +170,7 @@ export default {
         {
           id: "1233",
           materialTypeCode: "Code",
-          materialTypeNameCh: "涂油",
+          materialTypeNameCh: "玻尿酸",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -183,7 +179,7 @@ export default {
         {
           id: "12234",
           materialTypeCode: "Code",
-          materialTypeNameCh: "开槽",
+          materialTypeNameCh: "稳定剂",
           materialTypeNameEn: "caimo",
           isJoin: false,
           abridge: "cm",
@@ -192,34 +188,34 @@ export default {
         {
           id: "1253",
           materialTypeCode: "Code",
-          materialTypeNameCh: "码垛",
+          materialTypeNameCh: "润滑剂",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "1263",
           materialTypeCode: "Code",
-          materialTypeNameCh: "包装",
+          materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
-          isJoin: false,
+          isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "1283",
           materialTypeCode: "Code",
-          materialTypeNameCh: "回收",
+          materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
-          isJoin: false,
+          isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "12d3",
           materialTypeCode: "Code",
-          materialTypeNameCh: "检测",
+          materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -228,7 +224,7 @@ export default {
         {
           id: "1s23",
           materialTypeCode: "Code",
-          materialTypeNameCh: "淋膜",
+          materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -316,7 +312,7 @@ export default {
           model: "ASSA",
           amount: "100",
           photoId:
-            "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3279803882,547256365&fm=26&gp=0.jpg",
+            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
           typeParams: [
             {
               param: "参数1",
@@ -335,7 +331,7 @@ export default {
           model: "ASSA",
           amount: "100",
           photoId:
-            "https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2160376255,1800855874&fm=26&gp=0.jpg",
+            "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2320241958,1164167167&fm=26&gp=0.jpg",
           typeParams: [
             {
               param: "参数1",
@@ -354,7 +350,7 @@ export default {
           model: "ASSA",
           amount: "100",
           photoId:
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2603804376,1608167875&fm=26&gp=0.jpg",
+            "https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2686639530,1662760863&fm=26&gp=0.jpg",
           typeParams: [
             {
               param: "参数1",
@@ -370,30 +366,30 @@ export default {
       equipmentList: [
         {
           photoId:
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2603804376,1608167875&fm=26&gp=0.jpg",
+            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
           supplierId: "华东供应商",
           amount: "100000.00",
-          materialNameCh: "机械一号",
+          materialNameCh: "木板子",
           materialNameEn: "mubanzi",
           count: "2",
         },
 
         {
           photoId:
-            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3317696165,1629659760&fm=26&gp=0.jpg",
+            "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2320241958,1164167167&fm=26&gp=0.jpg",
           supplierId: "华东供应商",
           amount: "100000.00",
-          materialNameCh: "机械二号",
+          materialNameCh: "木板子",
           materialNameEn: "mubanzi",
           count: "2",
         },
 
         {
           photoId:
-            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2376961222,2882818689&fm=26&gp=0.jpg",
+            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
           supplierId: "华东供应商",
           amount: "100000.00",
-          materialNameCh: "机械三号",
+          materialNameCh: "木板子",
           materialNameEn: "mubanzi",
           count: "2",
         },

@@ -1,5 +1,5 @@
 <template>
-  <div :class="classObj">
+  <div class="nav" :style="bacStyle">
     <div>icon</div>
     <div class="right">
       <div class="nav-item">
@@ -20,19 +20,22 @@
 export default {
   data(){
     return{
-      classObj:[]
+      bacStyle:{}
     }
   },
   mounted(){
       let obj = localStorage.getItem("user");
-    let user = JSON.parse(obj);
-    
-    for (let index = 0; index < user.role.length; index++) {
-      const element = user.role[index];
-      if(element ===""){
+      let user = JSON.parse(obj);
+      if(user.role === "client"){
+        this.bacStyle = {"background":"linear-gradient(to right, #5e77b5, #93a7d9, #b6c6f1)"}
+      }else if(user.role === "sp"){
+        this.bacStyle = {"background":"linear-gradient(to right, #46CACD, #81E2E4, #B4F6F8)"}
+
+      }else if(user.role === "supplier"){
+        this.bacStyle = {"background":"linear-gradient(to right, #D6C02F, #D6C02F, #D6C02F)"}
 
       }
-    }
+   
   }
 }
 </script>
@@ -45,7 +48,7 @@ export default {
   border-bottom: 1px solid #f2f2f2;
   border-radius: 0px 0px 0px 15px;
   align-items: center;
-  background: linear-gradient(to right, #5e77b5, #93a7d9, #b6c6f1);
+  
   .right {
     display: flex;
     align-items: center;

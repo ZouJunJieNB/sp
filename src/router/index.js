@@ -10,6 +10,7 @@ const routes = [
         name: "home",
         component: () => import("@/views/Home"),
         children: [
+            /** ------------客户-------------- */
             {
                 path: "tabs",
                 name: "tabs",
@@ -23,6 +24,13 @@ const routes = [
                     import("@/components/client/projectManagement/budget/equipmentList"),
             }
             , {
+                // 客户: 原料清单
+                path: "/materialList",
+                name: "materialList",
+                component: () =>
+                    import("@/components/client/projectManagement/budget/materialList"),
+            }
+            , {
                 // 客户: 分类浏览
                 path: "/typeBrowsing",
                 name: "typeBrowsing",
@@ -34,7 +42,15 @@ const routes = [
                 name: "sat",
                 component: () =>
                     import("@/components/client/projectManagement/sat"),
-            }
+            },
+            /** ------------SP-------------- */
+            {
+                // SP: 商品管理
+                path: "/spCommodityMan",
+                name: "spCommodityMan",
+                component: () =>
+                    import("@/components/sp/systemManagement/commodityMan"),
+            },
         ]
     },
 
@@ -50,7 +66,7 @@ const routes = [
             {
                 path: "*",
                 name: "404",
-                component: () => import("../views/404.vue"),
+                component: () => import("@/views/404.vue"),
             },
 ]
 

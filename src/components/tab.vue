@@ -71,8 +71,9 @@ export default {
   // box-shadow:0px 0px 2px rgb(177, 167, 167);
   // border: 1px solid #f2f2f2;
   // border-radius: 15px;
-  width: 98%;
-  height: 98%;
+  width: 95%;
+  height: 95%;
+  margin-top: 2%;
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;

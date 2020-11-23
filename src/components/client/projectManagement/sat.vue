@@ -237,6 +237,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.el-button {
+  border:none;
+}
 .el-row {
   // 复选框选中变色
   .tui-checkbox:checked {
