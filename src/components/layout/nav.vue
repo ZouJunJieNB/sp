@@ -1,5 +1,5 @@
 <template>
-  <div class="nav">
+  <div :class="classObj">
     <div>icon</div>
     <div class="right">
       <div class="nav-item">
@@ -16,6 +16,26 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+      classObj:[]
+    }
+  },
+  mounted(){
+      let obj = localStorage.getItem("user");
+    let user = JSON.parse(obj);
+    
+    for (let index = 0; index < user.role.length; index++) {
+      const element = user.role[index];
+      if(element ===""){
+
+      }
+    }
+  }
+}
+</script>
 <style scoped lang="less">
 .nav {
   display: flex;

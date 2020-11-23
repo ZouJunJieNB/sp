@@ -56,19 +56,26 @@ export default {
   },
   methods: {
     doLogin() {
-      if (this.user.username != "zhangsan" || this.user.password != "123") {
-        this.$message.error("账号或密码错误");
-        return;
-      }
+      // if (this.user.username != "zhangsan" || this.user.password != "123") {
+      //   this.$message.error("账号或密码错误");
+      //   return;
+      // }
       // this.$http.get("/api/asdgsda", { name: "", paw: "" }).then((res) => {
       //   console.log(res);
       // });
+      let role = "";
+      if(this.user.username === "zhangsan"){
 
+      }else if(this.user.username === "lisi"){
+
+      }else if(this.user.username === "wangwu"){
+        
+      }
       let user = {
       
         username: "zhangsan",
         password: "123",
-        role: ["admin", "manager"],
+        role: role,
         menu: [
           {
             id:"1",
