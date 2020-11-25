@@ -21,11 +21,23 @@ import Menu from "@/components/layout/menu.vue";
 
 export default {
   created() {
-    console.log(this.$route);
+    this.switchI18n();
   },
   components: {
     Nav,
     Menu,
+  },
+  methods: {
+    switchI18n() {
+      // 判断当前环境是中文还是英文
+      const nowLang = navigator.language || navigator.browserLanguage;
+      console.log(nowLang)
+      if (nowLang.indexOf("zh") > -1) {
+        this.$i18n.locale = "zh-CN"; // 切换国际化成中文
+      } else {
+        this.$i18n.locale = "en-US"; // 切换国际化成英文
+      }
+    },
   },
 };
 </script>

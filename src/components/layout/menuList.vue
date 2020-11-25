@@ -31,32 +31,30 @@
                 }}</span>
               </template>
               <template v-for="item2 in item1.children">
-                <el-submenu
-                  v-if="item2.children && item2.children.length > 0"
+                <el-menu-item
+                  :class="colorStyle"
                   :key="item2.id"
-                  :index="item2.id"
+                  :index="item2.href"
+                  >{{ item2.menuName }}</el-menu-item
                 >
-                  <template slot="title">
-                    <i class="el-icon-location" style="color:#fff"></i>
-                    <span style="font-size:16px;margin-left:10px;">{{
-                      item2.menuName
-                    }}</span>
-                  </template>
-                  <!-- <menu-sun :menuList="item.children" /> -->
-                </el-submenu>
-                <el-menu-item v-else :key="item2.id" :index="item2.href">{{
-                  item2.menuName
-                }}</el-menu-item>
               </template>
             </el-submenu>
-            <el-menu-item v-else :key="item1.id" :index="item1.href">{{
-              item1.menuName
-            }}</el-menu-item>
+            <el-menu-item
+              :class="colorStyle"
+              v-else
+              :key="item1.id"
+              :index="item1.href"
+              >{{ item1.menuName }}</el-menu-item
+            >
           </template>
         </el-submenu>
-        <el-menu-item v-else :key="item.id" :index="item.href">{{
-          item.menuName
-        }}</el-menu-item>
+        <el-menu-item
+          :class="colorStyle"
+          v-else
+          :key="item.id"
+          :index="item.href"
+          >{{ item.menuName }}</el-menu-item
+        >
       </template>
     </el-menu>
   </div>
@@ -65,12 +63,28 @@
 <script>
 import MenuSun from "@/components/layout/menuList.vue";
 export default {
+  data() {
+    return {
+      colorStyle: "",
+    };
+  },
   name: "MenuSun", //必须要 递归组件的关键，并且要与引入组件的变量名称一致
   components: {
     MenuSun,
   },
   props: {
     menuList: {},
+  },
+  mounted() {
+    let obj = localStorage.getItem("user");
+
+    let user = JSON.parse(obj);
+    // 根据角色不同动态更换左侧菜单字体颜色，默认客户端颜色
+    if (user.role === "sp") {
+      this.colorStyle = "sp";
+    } else if (user.role === "supplier") {
+      this.colorStyle = "supplier";
+    }
   },
 };
 </script>
@@ -96,15 +110,38 @@ export default {
 .el-menu-item:visited,
 .el-menu-item:hover,
 .el-menu-item:active {
-  background: #f8f8f8;
-  background-size: 101px 80px;
-  border-radius: 25px 0 0 25px;
+  color: #5e77b5 !important;
+  background-color: transparent !important;
+  background: url("../../assets/active.png") no-repeat center;
+  background-size: 201px 80px;
+  border-radius: 30px 0 0 30px;
 }
 .el-menu-item.is-active {
-  color: #f8f8f8;
-  background: #f8f8f8;
-  background-size: 101px 80px;
+  color: #5e77b5 !important;
+  background-color: transparent !important;
+  background: url("../../assets/active.png") no-repeat center;
+  transform: translate(-1.5%, 0);
+  background-size: 201px 80px;
   border-radius: 25px 0 0 25px;
+}
+
+.sp:link,
+.sp:visited,
+.sp:hover,
+.sp:active {
+  color: #46cacd !important;
+}
+.sp.is-active {
+  color: #46cacd !important;
+}
+.supplier:link,
+.supplier:visited,
+.supplier:hover,
+.supplier:active {
+  color: #d6c02f !important;
+}
+.supplier.is-active {
+  color: #d6c02f !important;
 }
 
 .el-submenu__title .iconfont {

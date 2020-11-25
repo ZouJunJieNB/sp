@@ -17,22 +17,41 @@
             ]"
             @click="showChildern(type, index)"
           >
+          <!-- 右上角图标 -->
+            <div class="box-con" v-if="type.isJoin">
+              <span
+                ><i
+                  :class="
+                    activeIndex == index ? 'el-icon-view' : 'el-icon-check'
+                  "
+                ></i
+              ></span>
+            </div>
             <div class="typeText">{{ type.materialTypeNameCh }}</div>
             <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
-            <!-- <div v-if="childIndex == index" class="typeItemChil" :key="chil.id" v-for="chil in type.children">
-            <div class="typeText">{{ chil.materialTypeNameCh }}</div>
-            <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
-          </dv> -->
           </div>
           <div v-if="childIndex == index" class="flex">
             <div
-             :class="[
-              type.isJoin ? 'typeItemActive' : 'typeItemDefault',
-              'itemBodyChild',
-            ]"
-              v-for="child in type.children"
+              :class="[
+                child.isJoin ? 'typeItemActive' : 'typeItemDefault',
+                'itemBodyChild',
+              ]"
+              v-for="(child,childIndex) in type.children"
               :key="child.id"
+              @click="selectActive(child,childIndex)"
             >
+            <!-- 右上角图标 -->
+              <div class="box-con-child" v-if="child.isJoin">
+                <span
+                  ><i
+                    :class="
+                      childActiveIndex == childIndex
+                        ? 'el-icon-view'
+                        : 'el-icon-check'
+                    "
+                  ></i
+                ></span>
+              </div>
               <div class="typeText">{{ child.materialTypeNameCh }}</div>
               <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
             </div>
@@ -145,7 +164,7 @@ export default {
               materialTypeCode: "Code",
               materialTypeNameCh: "混料崽崽2",
               materialTypeNameEn: "caimo",
-              isJoin: true,
+              isJoin: false,
               abridge: "cm",
               iconId: "www.www.cc",
             },
@@ -165,7 +184,7 @@ export default {
               materialTypeCode: "Code",
               materialTypeNameCh: "挤出崽崽",
               materialTypeNameEn: "caimo",
-              isJoin: true,
+              isJoin: false,
               abridge: "cm",
               iconId: "www.www.cc",
             },
@@ -399,15 +418,24 @@ export default {
         },
       ],
       childIndex: "sb",
+      activeIndex: "sb",
+      childActiveIndex: "sb",
     };
   },
   methods: {
     showChildern(type, index) {
+      // 初始化子图标
+      this.childActiveIndex = "sb"
+      this.activeIndex = index;
       if (type.children != null) {
         this.childIndex = index;
       } else {
+        
         this.$message.success("我没有崽崽");
       }
+    },
+    selectActive(child, childIndex) {
+      this.childActiveIndex = childIndex;
     },
   },
 };
@@ -527,6 +555,26 @@ export default {
     margin-right: 10px;
     display: inline-block;
     border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    .box-con {
+      width: 58px;
+      height: 58px;
+      position: absolute;
+      background: #fff;
+      top: -30px;
+      right: -30px;
+      transform: rotate(45deg);
+      span {
+        color: #5e77b5;
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 58px;
+        text-align: center;
+        transform: rotate(-45deg);
+      }
+    }
   }
   .itemBodyChild {
     min-width: 70px;
@@ -534,8 +582,29 @@ export default {
     margin-right: 10px;
     display: inline-block;
     border-radius: 5px;
+    position: relative;
+    overflow: hidden;
     // background: red;
-    margin-top:80px;
+    margin-top: 80px;
+    .box-con-child {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background: #fff;
+      top: -30px;
+      right: -30px;
+      transform: rotate(45deg);
+      span {
+        color: #5e77b5;
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 50px;
+        text-align: center;
+        transform: rotate(-45deg);
+        font-size: 11px;
+      }
+    }
     .typeText {
       letter-spacing: 0px; //间距
       color: #fff;

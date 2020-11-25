@@ -21,25 +21,28 @@
               v-for="(type, index) in MaterialTypeList"
               :key="type.id"
             >
-              <div
-                :class="[
-                  type.isJoin ? 'typeItemActive' : 'typeItemDefault',
-                  'itemBody',
-                ]"
-                @click="showChildern(type, index)"
-              >
+              <div :class="['itemBody']" @click="showChildern(type, index)">
+                <!-- 右上角图标 -->
+                <div v-if="activeIndex == index" class="box-con">
+                  <span><i class="el-icon-view"></i></span>
+                </div>
                 <div class="typeText">{{ type.materialTypeNameCh }}</div>
                 <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
               </div>
               <div v-if="childIndex == index" class="flex">
                 <div
-                  :class="[
-                    type.isJoin ? 'typeItemActive' : 'typeItemDefault',
-                    'itemBodyChild',
-                  ]"
-                  v-for="child in type.children"
+                  :class="['itemBodyChild']"
+                  v-for="(child, childIndex) in type.children"
                   :key="child.id"
+                  @click="selectActive(child, childIndex)"
                 >
+                  <!-- 右上角图标 -->
+                  <div
+                    v-if="childActiveIndex == childIndex"
+                    class="box-con-child"
+                  >
+                    <span><i class="el-icon-view"></i></span>
+                  </div>
                   <div class="typeText">{{ child.materialTypeNameCh }}</div>
                   <div class="typeIcon">
                     <i class="el-icon-s-operation"></i>
@@ -153,14 +156,14 @@
               </el-form>
             </div>
           </el-col>
-          <el-col :span="24" :offset="6" style="height:10%">
-            <el-col :span="6" :offset="2">
+          <el-col :span="24" style="height:10%">
+            <el-col :span="6" :offset="7">
               <el-button class="detailBtn" size="medium" type="defalut" round
                 >添加</el-button
               >
             </el-col>
 
-            <el-col :span="6">
+            <el-col :span="6" :offset="1">
               <el-button class="detailBtn" size="medium" type="defalut" round
                 >保存</el-button
               >
@@ -184,16 +187,16 @@ export default {
         {
           id: "1",
           materialTypeCode: "Code",
-          materialTypeNameCh: "稳定剂",
+          materialTypeNameCh: "混料",
           materialTypeNameEn: "caimo",
-          isJoin: false,
+          isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
           children: [
             {
               id: "11234",
               materialTypeCode: "Code",
-              materialTypeNameCh: "稳定剂崽崽",
+              materialTypeNameCh: "混料崽崽",
               materialTypeNameEn: "caimo",
               isJoin: true,
               abridge: "cm",
@@ -202,9 +205,9 @@ export default {
             {
               id: "112344",
               materialTypeCode: "Code",
-              materialTypeNameCh: "稳定剂崽崽2",
+              materialTypeNameCh: "混料崽崽2",
               materialTypeNameEn: "caimo",
-              isJoin: true,
+              isJoin: false,
               abridge: "cm",
               iconId: "www.www.cc",
             },
@@ -213,18 +216,18 @@ export default {
         {
           id: "2",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "挤出",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
           children: [
             {
               id: "11234",
               materialTypeCode: "Code",
-              materialTypeNameCh: "彩膜崽崽",
+              materialTypeNameCh: "挤出崽崽",
               materialTypeNameEn: "caimo",
-              isJoin: true,
+              isJoin: false,
               abridge: "cm",
               iconId: "www.www.cc",
             },
@@ -233,7 +236,7 @@ export default {
         {
           id: "1233",
           materialTypeCode: "Code",
-          materialTypeNameCh: "玻尿酸",
+          materialTypeNameCh: "涂油",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -242,7 +245,7 @@ export default {
         {
           id: "12234",
           materialTypeCode: "Code",
-          materialTypeNameCh: "稳定剂",
+          materialTypeNameCh: "开槽",
           materialTypeNameEn: "caimo",
           isJoin: false,
           abridge: "cm",
@@ -251,34 +254,34 @@ export default {
         {
           id: "1253",
           materialTypeCode: "Code",
-          materialTypeNameCh: "润滑剂",
+          materialTypeNameCh: "码垛",
           materialTypeNameEn: "caimo",
-          isJoin: false,
+          isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "1263",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "包装",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "1283",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "回收",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "12d3",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "检测",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -287,7 +290,7 @@ export default {
         {
           id: "1s23",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "淋膜",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -458,6 +461,8 @@ export default {
         },
       ],
       childIndex: "sb",
+      activeIndex: "sb",
+      childActiveIndex: "sb",
     };
   },
   methods: {
@@ -465,11 +470,17 @@ export default {
       this.typeIsActive = index;
     },
     showChildern(type, index) {
+      // 初始化子图标
+      this.childActiveIndex = "sb";
+      this.activeIndex = index;
       if (type.children != null) {
         this.childIndex = index;
       } else {
         this.$message.success("我没有崽崽");
       }
+    },
+    selectActive(child, childIndex) {
+      this.childActiveIndex = childIndex;
     },
   },
 };
@@ -480,14 +491,14 @@ export default {
   height: 100%;
 }
 .head-col {
-  height: 25%;
-  margin-bottom: 10px;
-  min-height: 210px;
+  height: 18%;
+  margin-bottom: 2px;
+  min-height: 200px;
   .haad-left-col {
     height: 100%;
 
     ul {
-      height: 100%;
+      height: 90%;
       width: 100%;
       padding-top: 8px;
       box-sizing: border-box;
@@ -512,7 +523,7 @@ export default {
     }
   }
   .haad-right-col {
-    height: 100%;
+    height: 90%;
     .carrier-margin {
       border-radius: 10px;
       background: #fff;
@@ -541,26 +552,67 @@ export default {
           font-size: 60px;
         }
         .typeItem {
-        // height:80%;
+          // height:80%;
           display: flex;
           .itemBody {
             background: #46cacd;
             min-width: 100px;
-            height: 180px;
+            height: 160px;
             margin-right: 10px;
             margin-top: 10px;
             display: inline-block;
-            border-radius: 5px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            .box-con {
+              width: 58px;
+              height: 58px;
+              position: absolute;
+              background: #fff;
+              top: -30px;
+              right: -30px;
+              transform: rotate(45deg);
+              span {
+                color: #46CACD;
+                position: absolute;
+                bottom: 0;
+                display: block;
+                width: 58px;
+                text-align: center;
+                transform: rotate(-45deg);
+              }
+            }
           }
           .itemBodyChild {
             background: #46cacd;
             min-width: 70px;
-            height: 110px;
+            height: 90px;
             margin-right: 10px;
             display: inline-block;
-            border-radius: 5px;
-            // background: red;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
             margin-top: 80px;
+            .box-con-child {
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              background: #fff;
+              top: -30px;
+              right: -30px;
+              transform: rotate(45deg);
+              span {
+                color: #46CACD;
+                position: absolute;
+                bottom: 0;
+                display: block;
+                width: 50px;
+                text-align: center;
+                transform: rotate(-45deg);
+                font-size: 11px;
+              }
+            }
+
             .typeText {
               letter-spacing: 0px; //间距
               color: #fff;
@@ -581,7 +633,7 @@ export default {
   }
 }
 .body-col {
-  height: 73%;
+  height: 75%;
   .body-left-col {
     .title {
       letter-spacing: 2px; //间距
