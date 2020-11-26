@@ -41,7 +41,13 @@ const routes = [
                 path: "/sat",
                 name: "sat",
                 component: () =>
-                    import("@/components/client/projectManagement/sat"),
+                    import("@/components/client/projectManagement/projectImplementation/sat"),
+            },{
+                // 客户: 我的项目
+                path: "/myProject",
+                name: "myProject",
+                component: () =>
+                    import("@/components/client/projectManagement/myProject"),
             },
             /** ------------SP-------------- */
             {

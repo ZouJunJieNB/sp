@@ -113,8 +113,9 @@ export default {
   color: #5e77b5 !important;
   background-color: transparent !important;
   background: url("../../assets/active.png") no-repeat center;
+ transform: translate(-1.5%, 0);
   background-size: 201px 80px;
-  border-radius: 30px 0 0 30px;
+  border-radius: 25px 0 0 25px;
 }
 .el-menu-item.is-active {
   color: #5e77b5 !important;

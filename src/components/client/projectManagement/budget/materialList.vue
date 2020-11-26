@@ -2,7 +2,7 @@
   <el-row style="box-sizing: border-box; padding-right: 10px">
     <el-col :span="18" class="left">
       <div
-        style="widht: 100%; height: 190px; min-height: 10%; overflow-x: scroll"
+        style="widht: 100%; height: 190px; min-height: 10%; overflow-x: auto"
         class="flex"
       >
         <div
@@ -36,11 +36,11 @@
                 child.isJoin ? 'typeItemActive' : 'typeItemDefault',
                 'itemBodyChild',
               ]"
-              v-for="(child,childIndex) in type.children"
+              v-for="(child, childIndex) in type.children"
               :key="child.id"
-              @click="selectActive(child,childIndex)"
+              @click="selectActive(child, childIndex)"
             >
-            <!-- 右上角图标 -->
+              <!-- 右上角图标 -->
               <div class="box-con-child" v-if="child.isJoin">
                 <span
                   ><i
@@ -59,78 +59,98 @@
         </div>
       </div>
       <div class="tpyeDetails">
-        <el-col :span="24" style="height: 10%">
-          <h3 class="title">彩膜原料</h3>
-        </el-col>
-        <el-col :span="24" style="height: 80%">
-          <div
-            class="detailItem"
-            v-for="detail in MaterialTypeDetails"
-            :key="detail.id"
-          >
-            <img class="detailImg" :src="detail.photoId" />
-            <el-col :span="10">供应商:</el-col>
-            <el-col :span="12">{{ detail.supplierId }}</el-col>
-            <el-col :span="10">型号:</el-col>
-            <el-col :span="12">{{ detail.model }}</el-col>
-            <el-col :span="10">单价:</el-col>
-            <el-col :span="12">{{ detail.amount }}</el-col>
-            <el-col :span="10">缩写:</el-col>
-            <el-col :span="12">{{ detail.materialAbridge }}</el-col>
-            <el-col
-              :span="24"
-              v-for="typeParam in detail.typeParams"
-              :key="typeParam.id"
+        <el-col :span="24" style="height: 90%">
+          <div style="width:99%;height:100%;margin-left:3%">
+            <div
+              class="detailItem"
+              v-for="detail in MaterialTypeDetails"
+              :key="detail.id"
             >
-              <el-col :span="10">{{ typeParam.param }}:</el-col>
-              <el-col :span="12">{{ typeParam.value }}</el-col>
-            </el-col>
+              <div class="detailItemBody">
+                <img class="detailImg" :src="detail.photoId" />
+                <el-col :span="10">供应商:</el-col>
+                <el-col :span="12">{{ detail.supplierId }}</el-col>
+                <el-col :span="10">型号:</el-col>
+                <el-col :span="12">{{ detail.model }}</el-col>
+                <el-col :span="10">单价:</el-col>
+                <el-col :span="12">{{ detail.amount }}</el-col>
+                <el-col :span="10">缩写:</el-col>
+                <el-col :span="12">{{ detail.materialAbridge }}</el-col>
+                <el-col
+                  :span="24"
+                  v-for="typeParam in detail.typeParams"
+                  :key="typeParam.id"
+                >
+                  <el-col :span="10">{{ typeParam.param }}:</el-col>
+                  <el-col :span="12">{{ typeParam.value }}</el-col>
+                </el-col>
+              </div>
 
-            <el-col :span="2" :offset="10">
-              <el-button class="detailBtn" size="medium" type="primary" round
-                >加入清单</el-button
-              ></el-col
-            >
+              <div class="detailItemFooter">
+                <el-col :span="2" :offset="1">
+                  <el-button
+                    @click="addDetailed(detail)"
+                    class="detailBtn"
+                    size="medium"
+                    type="primary"
+                    round
+                    >加入清单</el-button
+                  ></el-col
+                >
+                <el-col :span="2" :offset="8">
+                  <el-button class="findDetail" size="medium" round
+                    >查看详情</el-button
+                  ></el-col
+                >
+              </div>
+            </div>
           </div>
+        </el-col>
+        <el-col class="tpyeDetailsFooter">
+          <el-col :span="10" :offset="8">
+            <el-pagination
+              style="margin-top:3%"
+              background
+              layout="prev, pager, next"
+              :total="1000"
+            >
+            </el-pagination
+          ></el-col>
         </el-col>
       </div>
     </el-col>
     <el-col :span="6" style="height: 100%">
       <div class="equipment">
-        <div>
-          <h3 class="title">材料清单</h3>
+        <div class="title">
+          材料清单
         </div>
         <div class="equipmentScroll">
-          <div
-            class="equipmentList"
-            v-for="equipment in equipmentList"
-            :key="equipment.id"
+          <el-table
+            :header-cell-style="{
+              //更改表头信息
+              color: '#5e77b5',
+              backgroundColor: '#qua',
+            }"
+            :data="equipmentList"
+            border
+            style="width: 100%;font-size:13px"
           >
-            <div style="width: 100%; text-align: center">
-              <img class="detailImg" :src="equipment.photoId" />
-            </div>
-            <div style="width: 70%; margin: auto">
-              <el-col :span="10">供应商:</el-col>
-              <el-col :span="11">{{ equipment.supplierId }}</el-col>
-              <el-col :span="10">原料名称:</el-col>
-              <el-col :span="11">{{ equipment.materialNameCh }}</el-col>
-              <el-col :span="10">单价:</el-col>
-              <el-col :span="11" style="color: #5b74b3; font-weight: bold"
-                >$ {{ equipment.amount }}</el-col
-              >
-              <el-col :span="10">数量:</el-col>
-              <el-col
-                :span="11"
-                style="color: #5b74b3; font-weight: bold; font-size: 18px"
-                ><i class="el-icon-caret-left"></i>{{ equipment.count
-                }}<i class="el-icon-caret-right"></i
-              ></el-col>
-            </div>
-          </div>
+            <el-table-column
+              label="序号"
+              width="50%"
+              type="index"
+              show-overflow-tooltip
+            >
+            </el-table-column>
+            <el-table-column prop="supplierId" label="城市"> </el-table-column>
+            <el-table-column prop="count" label="数量"> </el-table-column>
+            <el-table-column prop="amount" label="单价"> </el-table-column>
+            <el-table-column prop="amount" label="T/P($)"> </el-table-column>
+          </el-table>
         </div>
-        <div style="text-align: center">
+        <div style="text-align: center;height:5%">
           <el-divider></el-divider>
-          <h2 style="color: #5b74b3">总价: $ 200000.00</h2>
+          <h2 style="color: #5b74b3">总价: $ {{ totoAmount }}</h2>
         </div>
       </div>
     </el-col>
@@ -141,84 +161,9 @@ export default {
   data() {
     return {
       MaterialTypeList: [
+       
         {
-          id: "1",
-          materialTypeCode: "Code",
-          materialTypeNameCh: "稳定剂",
-          materialTypeNameEn: "caimo",
-          isJoin: false,
-          abridge: "cm",
-          iconId: "www.www.cc",
-          children: [
-            {
-              id: "11234",
-              materialTypeCode: "Code",
-              materialTypeNameCh: "稳定剂崽崽",
-              materialTypeNameEn: "caimo",
-              isJoin: true,
-              abridge: "cm",
-              iconId: "www.www.cc",
-            },
-            {
-              id: "112344",
-              materialTypeCode: "Code",
-              materialTypeNameCh: "稳定剂崽崽2",
-              materialTypeNameEn: "caimo",
-              isJoin: true,
-              abridge: "cm",
-              iconId: "www.www.cc",
-            },
-          ],
-        },
-        {
-          id: "2",
-          materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
-          materialTypeNameEn: "caimo",
-          isJoin: true,
-          abridge: "cm",
-          iconId: "www.www.cc",
-          children: [
-            {
-              id: "11234",
-              materialTypeCode: "Code",
-              materialTypeNameCh: "彩膜崽崽",
-              materialTypeNameEn: "caimo",
-              isJoin: true,
-              abridge: "cm",
-              iconId: "www.www.cc",
-            },
-          ],
-        },
-        {
-          id: "1233",
-          materialTypeCode: "Code",
-          materialTypeNameCh: "玻尿酸",
-          materialTypeNameEn: "caimo",
-          isJoin: true,
-          abridge: "cm",
-          iconId: "www.www.cc",
-        },
-        {
-          id: "12234",
-          materialTypeCode: "Code",
-          materialTypeNameCh: "稳定剂",
-          materialTypeNameEn: "caimo",
-          isJoin: false,
-          abridge: "cm",
-          iconId: "www.www.cc",
-        },
-        {
-          id: "1253",
-          materialTypeCode: "Code",
-          materialTypeNameCh: "润滑剂",
-          materialTypeNameEn: "caimo",
-          isJoin: false,
-          abridge: "cm",
-          iconId: "www.www.cc",
-        },
-        {
-          id: "1263",
+          id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -226,8 +171,8 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-        {
-          id: "1283",
+          {
+          id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -235,8 +180,8 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-        {
-          id: "12d3",
+          {
+          id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -244,8 +189,8 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-        {
-          id: "1s23",
+          {
+          id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -253,8 +198,8 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-        {
-          id: "12a",
+          {
+          id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -262,8 +207,9 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-        {
-          id: "123d",
+
+          {
+          id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
           materialTypeNameEn: "caimo",
@@ -271,7 +217,7 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-        {
+          {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -334,12 +280,27 @@ export default {
           supplierId: "123",
           model: "ASSA",
           amount: "100",
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
+          count: 1,
           photoId:
-            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
+            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2641633786,2969892221&fm=26&gp=0.jpg",
           typeParams: [
             {
               param: "参数1",
               value: "我是参数1",
+            },
+            {
+              param: "参数2",
+              value: "我是参数2",
+            },
+            {
+              param: "参数2",
+              value: "我是参数2",
+            },
+            {
+              param: "参数2",
+              value: "我是参数2",
             },
             {
               param: "参数2",
@@ -353,8 +314,11 @@ export default {
           supplierId: "123",
           model: "ASSA",
           amount: "100",
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
+          count: 1,
           photoId:
-            "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2320241958,1164167167&fm=26&gp=0.jpg",
+            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859361343,691577396&fm=26&gp=0.jpg",
           typeParams: [
             {
               param: "参数1",
@@ -372,8 +336,11 @@ export default {
           supplierId: "123",
           model: "ASSA",
           amount: "100",
+          count: 1,
+          materialNameCh: "木板子",
+          materialNameEn: "mubanzi",
           photoId:
-            "https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2686639530,1662760863&fm=26&gp=0.jpg",
+            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2123443608,2884407886&fm=26&gp=0.jpg",
           typeParams: [
             {
               param: "参数1",
@@ -388,38 +355,20 @@ export default {
       ],
       equipmentList: [
         {
+          id: "c02fc6a43d4142fdafa73de9071c9140d",
           photoId:
-            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
+            "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2603804376,1608167875&fm=26&gp=0.jpg",
           supplierId: "华东供应商",
           amount: "100000.00",
-          materialNameCh: "木板子",
+          materialNameCh: "机械一号",
           materialNameEn: "mubanzi",
-          count: "2",
-        },
-
-        {
-          photoId:
-            "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2320241958,1164167167&fm=26&gp=0.jpg",
-          supplierId: "华东供应商",
-          amount: "100000.00",
-          materialNameCh: "木板子",
-          materialNameEn: "mubanzi",
-          count: "2",
-        },
-
-        {
-          photoId:
-            "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2465858132,365358520&fm=26&gp=0.jpg",
-          supplierId: "华东供应商",
-          amount: "100000.00",
-          materialNameCh: "木板子",
-          materialNameEn: "mubanzi",
-          count: "2",
+          count: 2,
         },
       ],
       childIndex: "sb",
       activeIndex: "sb",
       childActiveIndex: "sb",
+      totoAmount: 0,
     };
   },
   methods: {
@@ -430,12 +379,46 @@ export default {
       if (type.children != null) {
         this.childIndex = index;
       } else {
-        this.$message.success("我没有崽崽");
       }
     },
     selectActive(child, childIndex) {
       this.childActiveIndex = childIndex;
     },
+    addDetailed(detail) {
+      for (let index = 0; index < this.equipmentList.length; index++) {
+        const element = this.equipmentList[index];
+        if (detail.id === element.id) {
+          ++this.equipmentList[index].count;
+          this.amountCalculation();
+          return;
+        }
+      }
+      this.equipmentList.unshift(detail);
+      this.amountCalculation();
+    },
+    countReduce(equipmentIndex) {
+      if (this.equipmentList[equipmentIndex].count <= 1) {
+        // 如果小于等于1的话就删除该清单
+        this.equipmentList.splice(equipmentIndex, 1);
+      } else {
+        --this.equipmentList[equipmentIndex].count;
+      }
+      this.amountCalculation();
+    },
+    countAdd(equipmentIndex) {
+      ++this.equipmentList[equipmentIndex].count;
+      this.amountCalculation();
+    },
+    amountCalculation() {
+      this.totoAmount = 0;
+      for (let index = 0; index < this.equipmentList.length; index++) {
+        const element = this.equipmentList[index];
+        this.totoAmount += element.count * element.amount;
+      }
+    },
+  },
+  mounted() {
+    this.amountCalculation();
   },
 };
 </script>
@@ -455,72 +438,81 @@ export default {
   display: flex;
   flex-direction: column;
   .title {
+    height: 5%;
     letter-spacing: 2px; //间距
+    font-size: 24px;
+    margin-top: 2%;
+    margin-left: 4%;
+    margin-bottom: 2%;
   }
   .equipmentScroll {
     width: 100%;
-    flex: 1;
-    overflow-y: scroll;
-  }
-  .equipmentList {
-    box-sizing: border-box;
-    .detailImg {
-      width: 60%;
-      height: 30%;
-      border-radius: 15px;
-      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-    }
-    .el-col {
-      height: 9%;
-    }
-    .el-col-10 {
-      font-size: 18px;
-      margin-left: 9%;
-    }
-    .el-col-11 {
-      font-weight: lighter;
-    }
+    height: 80%;
+    // flex: 1;
+    // overflow-y: scroll;
   }
 }
 
 .tpyeDetails {
   height: 90%;
-  width: 100%;
+  width: 98%;
   flex: 1;
   box-sizing: border-box;
   margin-top: 10px;
-  padding: 10px;
+  // padding: 10px;
   background: #fff;
   border-radius: 15px;
-  .title {
-    letter-spacing: 2px; //间距
-  }
   .detailItem {
-    .detailBtn {
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    .detailItemBody {
+      width: 100%;
+      height: 88%;
+      margin-top: 8%;
+      flex: 1;
+      overflow-y: scroll;
     }
-    width: 30%;
-    height: 90%;
-    margin-top: 3%;
-    margin-left: 2.5%;
+    // 滚动条透明
+    ::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+      color: transparent;
+    }
+    .detailItemFooter {
+      width: 100%;
+      margin-top: 2%;
+      height: 8%;
+      .detailBtn {
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+        background: #5e77b5;
+        border: none;
+      }
+    }
+
+    width: 32%;
+    height: 98%;
+    margin-left: 0.5%;
     display: inline-block;
     .detailImg {
-      width: 80%;
-      height: 40%;
+      width: 90%;
+      height: 50%;
       border-radius: 15px;
-      margin-bottom: 10%;
+      margin-bottom: 1%;
     }
     .el-col {
       height: 7%;
     }
     .el-col-10 {
       font-size: 18px;
-      margin-left: 2%;
+      margin-left: 4%;
     }
     .el-col-12 {
       font-weight: lighter;
-      margin-left: 2%;
+      margin-left: 4%;
     }
+  }
+  .tpyeDetailsFooter {
+    height: 10%;
+   
   }
 }
 .typeText {
@@ -545,13 +537,11 @@ export default {
 }
 .typeItem {
   display: flex;
-  // width: 100%;
-  // height: 180px;
   position: relative;
   .itemBody {
     min-width: 100px;
     height: 180px;
-    margin-right: 10px;
+    margin-right: 22px;
     display: inline-block;
     border-radius: 5px;
     position: relative;
@@ -581,10 +571,10 @@ export default {
     margin-right: 10px;
     display: inline-block;
     border-radius: 5px;
-    // background: red;
-    margin-top: 80px;
     position: relative;
     overflow: hidden;
+    // background: red;
+    margin-top: 80px;
     .box-con-child {
       width: 50px;
       height: 50px;

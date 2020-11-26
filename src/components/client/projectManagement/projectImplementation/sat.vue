@@ -241,6 +241,10 @@ export default {
   border:none;
 }
 .el-row {
+  
+  .tui-checkbox:focus {
+     outline: none;
+ }
   // 复选框选中变色
   .tui-checkbox:checked {
     background: #1673ff;

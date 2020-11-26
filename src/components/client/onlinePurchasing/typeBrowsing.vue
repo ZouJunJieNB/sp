@@ -17,12 +17,38 @@
         <div class="carrier-margin">
           <div class="carrier flex">
             <div
-              :class="['typeItem']"
-              v-for="type in MaterialTypeList"
+              class="typeItem"
+              v-for="(type, index) in MaterialTypeList"
               :key="type.id"
             >
-              <div class="typeText">{{ type.materialTypeNameCh }}</div>
-              <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
+              <div :class="['itemBody']" @click="showChildern(type, index)">
+                <!-- 右上角图标 -->
+                <div v-if="activeIndex == index" class="box-con">
+                  <span><i class="el-icon-view"></i></span>
+                </div>
+                <div class="typeText">{{ type.materialTypeNameCh }}</div>
+                <div class="typeIcon"><i class="el-icon-s-operation"></i></div>
+              </div>
+              <div v-if="childIndex == index" class="flex">
+                <div
+                  :class="['itemBodyChild']"
+                  v-for="(child, childIndex) in type.children"
+                  :key="child.id"
+                  @click="selectActive(child, childIndex)"
+                >
+                  <!-- 右上角图标 -->
+                  <div
+                    v-if="childActiveIndex == childIndex"
+                    class="box-con-child"
+                  >
+                    <span><i class="el-icon-view"></i></span>
+                  </div>
+                  <div class="typeText">{{ child.materialTypeNameCh }}</div>
+                  <div class="typeIcon">
+                    <i class="el-icon-s-operation"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -56,7 +82,12 @@
               </el-col>
 
               <el-col :span="2">
-                <el-button class="detailBtn"style="background:#5e77b5" size="medium" type="primary" round
+                <el-button
+                  class="detailBtn"
+                  style="background:#5e77b5"
+                  size="medium"
+                  type="primary"
+                  round
                   >加入订单</el-button
                 ></el-col
               >
@@ -101,17 +132,23 @@
                 <el-col :span="10">供应商:</el-col>
                 <el-col :span="12">{{ equipment.supplierId }}</el-col>
                 <el-col :span="10">单价:</el-col>
-                <el-col :span="12" style="color:#5e77b5">$ {{ equipment.amount }}</el-col>
+                <el-col :span="12" style="color:#5e77b5"
+                  >$ {{ equipment.amount }}</el-col
+                >
               </el-col>
             </el-col>
             <el-col style="height:30%;margin-top:2px" :span="24">
-              <el-col :span="2":offset="4">
-                <el-button style="background:#5e77b5"  size="small" type="primary" round
+              <el-col :span="2" :offset="4">
+                <el-button
+                  style="background:#5e77b5"
+                  size="small"
+                  type="primary"
+                  round
                   >加入订单</el-button
                 ></el-col
               >
               <el-col :span="2" :offset="8">
-                <el-button  size="small" type="defalut" round
+                <el-button size="small" type="defalut" round
                   >查看详情</el-button
                 ></el-col
               >
@@ -130,27 +167,58 @@ export default {
       type: ["设备类", "辅机类", "备品备件", "原材料"],
       MaterialTypeList: [
         {
-          id: "1123",
+          id: "1",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "混料",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
           iconId: "www.www.cc",
+          children: [
+            {
+              id: "11234",
+              materialTypeCode: "Code",
+              materialTypeNameCh: "混料崽崽",
+              materialTypeNameEn: "caimo",
+              isJoin: true,
+              abridge: "cm",
+              iconId: "www.www.cc",
+            },
+            {
+              id: "112344",
+              materialTypeCode: "Code",
+              materialTypeNameCh: "混料崽崽2",
+              materialTypeNameEn: "caimo",
+              isJoin: false,
+              abridge: "cm",
+              iconId: "www.www.cc",
+            },
+          ],
         },
         {
-          id: "1223",
+          id: "2",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "挤出",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
+          children: [
+            {
+              id: "11234",
+              materialTypeCode: "Code",
+              materialTypeNameCh: "挤出崽崽",
+              materialTypeNameEn: "caimo",
+              isJoin: false,
+              abridge: "cm",
+              iconId: "www.www.cc",
+            },
+          ],
         },
         {
           id: "1233",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "涂油",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -159,16 +227,16 @@ export default {
         {
           id: "12234",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "开槽",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "1253",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "码垛",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -177,25 +245,25 @@ export default {
         {
           id: "1263",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "包装",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "1283",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "回收",
           materialTypeNameEn: "caimo",
-          isJoin: true,
+          isJoin: false,
           abridge: "cm",
           iconId: "www.www.cc",
         },
         {
           id: "12d3",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "检测",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -204,7 +272,7 @@ export default {
         {
           id: "1s23",
           materialTypeCode: "Code",
-          materialTypeNameCh: "彩膜",
+          materialTypeNameCh: "淋膜",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -258,7 +326,7 @@ export default {
         {
           id: "1236",
           materialTypeCode: "Code",
-          materialTypeNameCh: "稳订剂",
+          materialTypeNameCh: "稳定剂",
           materialTypeNameEn: "caimo",
           isJoin: true,
           abridge: "cm",
@@ -353,7 +421,6 @@ export default {
           materialNameEn: "mubanzi",
           count: "2",
         },
-        
 
         {
           photoId:
@@ -375,11 +442,27 @@ export default {
           count: "2",
         },
       ],
+      childIndex: "sb",
+      activeIndex: "sb",
+      childActiveIndex: "sb",
     };
   },
   methods: {
     change(index) {
       this.typeIsActive = index;
+    },
+    showChildern(type, index) {
+      // 初始化子图标
+      this.childActiveIndex = "sb";
+      this.activeIndex = index;
+      if (type.children != null) {
+        this.childIndex = index;
+      } else {
+        this.$message.success("我没有崽崽");
+      }
+    },
+    selectActive(child, childIndex) {
+      this.childActiveIndex = childIndex;
     },
   },
 };
@@ -390,26 +473,26 @@ export default {
   height: 100%;
 }
 .head-col {
-  height: 25%;
-  margin-bottom: 10px;
-  min-height: 210px;
+  height: 22%;
+  margin-bottom: 0px;
+  min-height: 200px;
   .haad-left-col {
     height: 100%;
 
     ul {
-      height: 100%;
-      width: 100%;
-      padding-top: 8px;
+      height: 90%;
+      width: 90%;
+      margin-left: 10%;
+      padding-top: 15%;
       box-sizing: border-box;
       letter-spacing: 2px; //间距
-
       li {
         margin-left: 15px;
         margin-bottom: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 20%;
+        height: 19%;
         border-radius: 10px 0 0 10px;
         color: #fff;
         background: #5e77b5;
@@ -422,7 +505,7 @@ export default {
     }
   }
   .haad-right-col {
-    height: 100%;
+    height: 90%;
     .carrier-margin {
       border-radius: 10px;
       background: #fff;
@@ -451,20 +534,88 @@ export default {
           font-size: 60px;
         }
         .typeItem {
-          background: #5e77b5;
-          min-width: 100px;
-          height: 80%;
-          margin-left: 3%;
-          margin-top: 1.5%;
-          display: inline-block;
-          border-radius: 5px;
+          // height:80%;
+          display: flex;
+          .itemBody {
+            background: #5e77b5;
+            min-width: 100px;
+            height: 160px;
+            margin-right: 10px;
+            margin-top: 10px;
+            display: inline-block;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            .box-con {
+              width: 58px;
+              height: 58px;
+              position: absolute;
+              background: #fff;
+              top: -30px;
+              right: -30px;
+              transform: rotate(45deg);
+              span {
+                color: #5e77b5;
+                position: absolute;
+                bottom: 0;
+                display: block;
+                width: 58px;
+                text-align: center;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+          .itemBodyChild {
+            background: #5e77b5;
+            min-width: 70px;
+            height: 90px;
+            margin-right: 10px;
+            display: inline-block;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            .box-con-child {
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              background: #fff;
+              top: -30px;
+              right: -30px;
+              transform: rotate(45deg);
+              span {
+                color: #5e77b5;
+                position: absolute;
+                bottom: 0;
+                display: block;
+                width: 50px;
+                text-align: center;
+                transform: rotate(-45deg);
+                font-size: 11px;
+              }
+            }
+
+            .typeText {
+              letter-spacing: 0px; //间距
+              color: #fff;
+              line-height: 50px;
+              height: 50%;
+              text-align: center;
+              font-size: 11px;
+            }
+
+            .typeIcon i {
+              color: #fff;
+              font-size: 30px;
+            }
+          }
         }
       }
     }
   }
 }
 .body-col {
-  height: 73%;
+  height: 76%;
   .body-left-col {
     height: 100%;
     .detail {

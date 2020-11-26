@@ -499,11 +499,12 @@ export default {
 
     ul {
       height: 90%;
-      width: 100%;
+      width: 90%;
       padding-top: 8px;
       box-sizing: border-box;
       letter-spacing: 2px; //间距
-
+      margin-left: 10%;
+      padding-top: 10%;
       li {
         margin-left: 15px;
         margin-bottom: 5px;
@@ -573,7 +574,7 @@ export default {
               right: -30px;
               transform: rotate(45deg);
               span {
-                color: #46CACD;
+                color: #46cacd;
                 position: absolute;
                 bottom: 0;
                 display: block;
@@ -602,7 +603,7 @@ export default {
               right: -30px;
               transform: rotate(45deg);
               span {
-                color: #46CACD;
+                color: #46cacd;
                 position: absolute;
                 bottom: 0;
                 display: block;
