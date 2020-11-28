@@ -60,7 +60,7 @@
       </div>
       <div class="tpyeDetails">
         <el-col :span="24" style="height: 90%">
-          <div style="width:99%;height:100%;margin-left:3%">
+          <div style="width: 99%; height: 100%; margin-left: 3%">
             <div
               class="detailItem"
               v-for="detail in MaterialTypeDetails"
@@ -108,22 +108,21 @@
         </el-col>
         <el-col class="tpyeDetailsFooter">
           <el-col :span="10" :offset="8">
-            <el-pagination
-              style="margin-top:3%"
+            <!-- <el-pagination
+              style="margin-top: 3%"
               background
               layout="prev, pager, next"
               :total="1000"
             >
-            </el-pagination
-          ></el-col>
+            </el-pagination -->
+            <Pagination :total="100" @pageChange="" />
+          </el-col>
         </el-col>
       </div>
     </el-col>
     <el-col :span="6" style="height: 100%">
       <div class="equipment">
-        <div class="title">
-          材料清单
-        </div>
+        <div class="title">材料清单</div>
         <div class="equipmentScroll">
           <el-table
             :header-cell-style="{
@@ -133,7 +132,7 @@
             }"
             :data="equipmentList"
             border
-            style="width: 100%;font-size:13px"
+            style="width: 100%; font-size: 13px"
           >
             <el-table-column
               label="序号"
@@ -148,7 +147,7 @@
             <el-table-column prop="amount" label="T/P($)"> </el-table-column>
           </el-table>
         </div>
-        <div style="text-align: center;height:5%">
+        <div style="text-align: center; height: 5%">
           <el-divider></el-divider>
           <h2 style="color: #5b74b3">总价: $ {{ totoAmount }}</h2>
         </div>
@@ -157,11 +156,14 @@
   </el-row>
 </template>
 <script>
+import Pagination from "@/components/pagination";
 export default {
+  components: {
+    Pagination,
+  },
   data() {
     return {
       MaterialTypeList: [
-       
         {
           id: "123s",
           materialTypeCode: "Code",
@@ -171,7 +173,7 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-          {
+        {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -180,7 +182,7 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-          {
+        {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -189,7 +191,7 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-          {
+        {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -198,7 +200,7 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-          {
+        {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -208,7 +210,7 @@ export default {
           iconId: "www.www.cc",
         },
 
-          {
+        {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -217,7 +219,7 @@ export default {
           abridge: "cm",
           iconId: "www.www.cc",
         },
-          {
+        {
           id: "123s",
           materialTypeCode: "Code",
           materialTypeNameCh: "彩膜",
@@ -512,7 +514,6 @@ export default {
   }
   .tpyeDetailsFooter {
     height: 10%;
-   
   }
 }
 .typeText {
