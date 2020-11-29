@@ -115,7 +115,7 @@
               :total="1000"
             >
             </el-pagination -->
-            <Pagination :total="100" @pageChange="" />
+            <Pagination :total="100" />
           </el-col>
         </el-col>
       </div>

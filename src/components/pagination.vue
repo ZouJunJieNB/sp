@@ -1,16 +1,17 @@
 <template>
   <div class="flex pagination">
-    <span @click="jj">上一页</span>
+    <span class="page" @click="jj">上一页</span>
     <div class="flex">
       <div
         :class="{ item: true, itemActive: thisPage == i + 1 }"
         v-for="(item, i) in thisTotal"
         :key="item"
+        @click="setItem(i + 1)"
       >
         {{ item }}
       </div>
     </div>
-    <span style="margin-left: 10px" @click="add">下一页</span>
+    <span class="page" style="margin-left: 10px" @click="add">下一页</span>
   </div>
 </template>
 <script>
@@ -50,6 +51,10 @@ export default {
         this.$emit("pageChange", this.thisPage);
       }
     },
+    setItem(id) {
+      this.thisPage = id;
+      this.$emit("pageChange", this.thisPage);
+    },
   },
 };
 </script>
@@ -76,6 +81,15 @@ export default {
   }
   .itemActive {
     background: #409eff; //#606266
+    color: #fff;
+  }
+  .page {
+    border-radius: 20px;
+    padding: 5px 15px;
+    background: #f4f4f5;
+  }
+  .page:hover {
+    background: #409eff;
     color: #fff;
   }
 }
