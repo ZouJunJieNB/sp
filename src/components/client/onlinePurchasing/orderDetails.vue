@@ -124,10 +124,7 @@ export default {
       font-size: 20px;
     }
     .body-body-body {
-      //   width: 80%;
       height: 45%;
-      //   margin: auto;
-      //   background: yellow;
     }
     .body-body-footer {
       width: 85%;
