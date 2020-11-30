@@ -48,18 +48,25 @@ const routes = [{
                     import ("@/components/client/projectManagement/myProject"),
             },
             {
-                // 客户: 我的项目
+                // 客户: 订单管理
                 path: "/orderManagement",
                 name: "orderManagement",
                 component: () =>
                     import ("@/components/client/onlinePurchasing/orderManagement"),
             },
             {
-                // 客户: 我的项目
+                // 客户: 订单详情
                 path: "/orderDetails",
                 name: "orderDetails",
                 component: () =>
                     import ("@/components/client/onlinePurchasing/orderDetails"),
+            },
+            {
+                // 客户: 人员准备-人员要求
+                path: "/requirement",
+                name: "requirement",
+                component: () =>
+                    import ("@/components/client/projectManagement/budget/personnelPreparation/requirement"),
             },
             /** ------------SP-------------- */
             {

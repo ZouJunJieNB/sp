@@ -3,9 +3,10 @@
     <div class="body-head flex-cen">
       <div>
         <i
+        @click="returnOrder"
           class="el-icon-arrow-left"
           style="
-      color:#929292;font-weight:bold"
+      color:#929292;font-weight:bold;cursor: pointer;"
         ></i>
         <span style="margin-left:10px"
           >订单编号: {{ orderInfo.orderNumber }}</span
@@ -82,6 +83,11 @@ export default {
         ],
       },
     };
+  },
+  methods:{
+    returnOrder(){
+      this.$router.push("/orderManagement");
+    }
   },
   mounted() {
     this.$route.query.orderInfo;
