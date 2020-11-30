@@ -107,16 +107,14 @@
           </div>
         </el-col>
         <el-col class="tpyeDetailsFooter">
-          <el-col :span="10" :offset="8">
-            <!-- <el-pagination
+          <!-- <el-pagination
               style="margin-top: 3%"
               background
               layout="prev, pager, next"
               :total="1000"
             >
             </el-pagination -->
-            <Pagination :total="100" />
-          </el-col>
+          <Pagination :total="1001" />
         </el-col>
       </div>
     </el-col>
