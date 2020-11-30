@@ -217,11 +217,6 @@ export default {
 </style>
 <style lang="less" scoped>
 .body {
-  width: 97%;
-  height: 98%;
-  margin: auto;
-  background: #fff;
-  border-radius: 25px;
   .body-head {
     width: 95%;
     height:80px;
