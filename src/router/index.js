@@ -1,8 +1,8 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
-import Home from "../views/Home.vue"
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [{
         path: "/",
@@ -16,31 +16,38 @@ const routes = [{
                 name: "tabs",
                 component: () =>
                     import ("@/views/Tabs"),
-            }, {
+            },
+            {
                 // 客户: 设备清单
                 path: "/equipmentList",
                 name: "equipmentList",
                 component: () =>
                     import ("@/components/client/projectManagement/budget/equipmentList"),
-            }, {
+            },
+            {
                 // 客户: 原料清单
                 path: "/materialList",
                 name: "materialList",
                 component: () =>
                     import ("@/components/client/projectManagement/budget/materialList"),
-            }, {
+            },
+            {
                 // 客户: 分类浏览
                 path: "/typeBrowsing",
                 name: "typeBrowsing",
                 component: () =>
                     import ("@/components/client/onlinePurchasing/typeBrowsing"),
-            }, {
+            },
+            {
                 // 客户: SAT管理
                 path: "/sat",
                 name: "sat",
                 component: () =>
-                    import ("@/components/client/projectManagement/projectImplementation/sat"),
-            }, {
+                    import (
+                        "@/components/client/projectManagement/projectImplementation/sat"
+                    ),
+            },
+            {
                 // 客户: 我的项目
                 path: "/myProject",
                 name: "myProject",
@@ -62,11 +69,22 @@ const routes = [{
                     import ("@/components/client/onlinePurchasing/orderDetails"),
             },
             {
-                // 客户: 人员准备-人员要求
-                path: "/requirement",
-                name: "requirement",
+                // 客户: 人员准备
+                path: "/personnel",
+                name: "personnel",
                 component: () =>
-                    import ("@/components/client/projectManagement/budget/personnelPreparation/requirement"),
+                    import (
+                        "@/components/client/projectManagement/budget/personnelPreparation/preparation"
+                    ),
+                children: [{
+                    // 客户: 人员准备-人员要求
+                    path: "/requirement",
+                    name: "requirement",
+                    component: () =>
+                        import (
+                            "@/components/client/projectManagement/budget/personnelPreparation/requirement"
+                        ),
+                }, ],
             },
             /** ------------SP-------------- */
             {
@@ -76,7 +94,7 @@ const routes = [{
                 component: () =>
                     import ("@/components/sp/systemManagement/commodityMan"),
             },
-        ]
+        ],
     },
 
     {
@@ -94,12 +112,12 @@ const routes = [{
         component: () =>
             import ("@/views/404.vue"),
     },
-]
+];
 
 const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes,
-})
+});
 
-export default router
+export default router;
