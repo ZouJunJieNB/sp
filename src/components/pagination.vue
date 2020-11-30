@@ -68,7 +68,7 @@ export default {
     width: 30px;
     height: 30px;
     border-radius: 2px;
-    background: #f4f4f5; //#606266
+    background: #fff; //#606266
     color: #606266;
     display: flex;
     align-items: center;
@@ -80,16 +80,16 @@ export default {
     cursor: pointer;
   }
   .itemActive {
-    background: #409eff; //#606266
+    background: #5e77b5; //#606266
     color: #fff;
   }
   .page {
     border-radius: 20px;
-    padding: 5px 15px;
+    padding: 8px 25px;
     background: #f4f4f5;
   }
   .page:hover {
-    background: #409eff;
+    background: #5e77b5;
     color: #fff;
   }
 }

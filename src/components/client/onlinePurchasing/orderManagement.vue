@@ -237,13 +237,10 @@ export default {
   .body-body {
     width: 100%;
     border-top: 1px solid #a9a9a9;
-    // .el-table [class*=el-table__row--level] .el-table__expand-icon{
-    //   // text-align: left;
-    //   margin-right: 30px !important;
-    // }
   }
   .body-footer {
     width: 100%;
+    height: 80px;
   }
 }
 </style>
