@@ -41,11 +41,11 @@
     </div>
     <div class="body-footer flex-cen">
       <el-steps style="width:100%" :active="1" finish-status="success">
-        <el-step title="项目启动"></el-step>
-        <el-step title="预算清单"></el-step>
-        <el-step title="SAT"></el-step>
-        <el-step title="FAT"></el-step>
-        <el-step title="验收"></el-step>
+        <el-step title="项目启动" description="2001-1-1"></el-step>
+        <el-step title="预算清单" description="2001-1-1"></el-step>
+        <el-step title="SAT" description="2001-1-1"></el-step>
+        <el-step title="FAT" description="2001-1-1"></el-step>
+        <el-step title="验收" description="2001-1-1"></el-step>
       </el-steps>
     </div>
   </div>

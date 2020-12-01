@@ -92,7 +92,7 @@
                 ></el-col
               >
               <el-col :span="2" :offset="8">
-                <el-button class="detailBtn" size="medium" type="defalut" round
+                <el-button style="margin-top:50%" size="medium" type="defalut" round
                   >查看详情</el-button
                 ></el-col
               >

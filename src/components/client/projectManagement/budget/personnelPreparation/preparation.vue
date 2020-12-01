@@ -27,11 +27,10 @@ export default {
       this.avtive = index;
       if (index == 0) {
         this.$router.push("/requirement");
+      } else if (index == 1) {
+        this.$router.push("/trainingPlan");
       }
     },
-  },
-  mounted() {
-    this.$router.push("/requirement");
   },
 };
 </script>

@@ -7,7 +7,7 @@
           :key="project.id"
           :class="[
             'project-item',
-            index === activeColor ? 'projectActive' : 'projectDefault',
+            index === activeColor ? 'projectActive box-shadow-black' : 'projectDefault',
           ]"
           @click="changeColor(index)"
         >
@@ -87,7 +87,7 @@
                 <div>
                   图纸
                   <el-button
-                    class="detailBtn"
+                    class="findDetail"
                     size="medium"
                     type="defalut"
                     round
@@ -97,7 +97,7 @@
                 <div>
                   视频
                   <el-button
-                    class="detailBtn"
+                    class="findDetail"
                     size="medium"
                     type="defalut"
                     round
@@ -226,7 +226,6 @@ export default {
       }
       .projectActive {
         transform: scale(1.01, 1.01);
-        box-shadow: #666 0px 0px 10px;
         background: #5e77b5;
         color: #fff;
         .item {

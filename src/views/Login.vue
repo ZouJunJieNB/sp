@@ -484,15 +484,15 @@ export default {
                       {
                         id: "1-2-3",
                         menuName: "人员准备",
-                        menuNngName: "project",
-                        href: "/project",
+                        menuNngName: "personnel",
+                        href: "/personnel",
                         icon: "www.www",
                       },
                       {
                         id: "1-2-4",
                         menuName: "资金准备",
-                        menuNngName: "project",
-                        href: "/project",
+                        menuNngName: "fundPreparation",
+                        href: "/fundPreparation",
                         icon: "www.www",
                       },
                       {
@@ -505,8 +505,8 @@ export default {
                       {
                         id: "1-2-6",
                         menuName: "商务条款",
-                        menuNngName: "project",
-                        href: "/project",
+                        menuNngName: "businessTerms",
+                        href: "/businessTerms",
                         icon: "www.www",
                       },
                     ],
@@ -542,8 +542,8 @@ export default {
                       {
                         id: "1-3-4",
                         menuName: "FAT管理",
-                        menuNngName: "project",
-                        href: "/project",
+                        menuNngName: "fat",
+                        href: "/fat",
                         icon: "www.www",
                       },
                       {

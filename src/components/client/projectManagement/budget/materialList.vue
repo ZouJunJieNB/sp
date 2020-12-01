@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <div class="tpyeDetails">
+      <div class="tpyeDetails scroTransparent">
         <el-col :span="24" style="height: 90%">
           <div style="width: 99%; height: 100%; margin-left: 3%">
             <div
@@ -470,12 +470,7 @@ export default {
       flex: 1;
       overflow-y: scroll;
     }
-    // 滚动条透明
-    ::-webkit-scrollbar {
-      height: 0;
-      width: 0;
-      color: transparent;
-    }
+
     .detailItemFooter {
       width: 100%;
       margin-top: 2%;

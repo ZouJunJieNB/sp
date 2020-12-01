@@ -21,7 +21,6 @@ body,
   background-color: #f5f5f5;
 }
 
-
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -37,13 +36,21 @@ body,
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #c8c8c8;
 }
+.scroTransparent {
+  // 滚动条透明
+  ::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    color: transparent;
+  }
+}
 
-.body{
+.body {
   width: 97%;
   height: 98%;
-    margin:auto;
-    background:#fff;
-    border-radius: 25px;
+  margin: auto;
+  background: #fff;
+  border-radius: 25px;
 }
 /*** -------------------   */
 
@@ -75,15 +82,39 @@ body,
   .flex;
   align-items: center;
 }
+// 上下左右居中
+.flex-col-center {
+  .flex;
+  align-items: center;
+  justify-content: center;
+}
 .f1 {
   flex: 1;
+}
+
+//  并排,子元素超出换行
+.flex-line {
+  flex-wrap: wrap;
+}
+
+// 并排 水平居中，平分剩余空间
+.flex-cen-around {
+  .flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+// 垂直排 ，平分剩余空间
+.flex-around {
+  .flex;
+  flex-direction:column;
+  justify-content: space-around;
 }
 
 .tac {
   width: 100%;
   height: 100%;
 }
-
 
 /** ----- btn 颜色默认样式 client客户端默认样式 ------**/
 .el-button--default {
@@ -104,4 +135,109 @@ body,
   color: #5e77b5;
   background-color: none;
   border-color: #5e77b5;
+}
+
+/** 输入框修改 客户端 **/
+.reqitem {
+  .el-input-group--prepend {
+    .el-input-group__append,
+    .el-input-group__prepend {
+      background-color: #fff;
+      color: black;
+      border: none;
+    }
+    .el-input__inner {
+      background-color: #fff !important;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid black;
+      color: black;
+      height: 20px;
+    }
+    input::placeholder {
+      color: transparent;
+    }
+  }
+}
+.itemActive {
+  background: #5e77b5 !important;
+  .el-input-group--prepend {
+    .el-input-group__append,
+    .el-input-group__prepend {
+      background-color: #5e77b5;
+      color: #fff;
+      border: none;
+    }
+    .el-input__inner {
+      background-color: #5e77b5 !important;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid #fff;
+      color: #606266;
+    }
+    input::placeholder {
+      color: #b9bfc5;
+    }
+  }
+}
+
+// 阴影
+.box-shadow-black {
+  box-shadow: #666 0px 0px 10px;
+}
+
+
+/** 复选框 **/
+.tui-checkbox:focus {
+  outline: none;
+}
+// 复选框选中变色
+.tui-checkbox:checked {
+ background: #1673ff;
+}
+// 复选框变圆
+.tui-checkbox {
+ width: 25px;
+ height: 25px;
+ background-color: #ffffff;
+ border: solid 1px #dddddd;
+ -webkit-border-radius: 50%;
+ border-radius: 50%;
+ font-size: 0.8rem;
+ margin: 0;
+ padding: 0;
+ position: relative;
+ display: inline-block;
+ vertical-align: top;
+ cursor: default;
+ -webkit-appearance: none;
+ -webkit-user-select: none;
+ user-select: none;
+ -webkit-transition: background-color ease 0.1s;
+ transition: background-color ease 0.1s;
+}
+// 复选框变圆
+.tui-checkbox:checked::after {
+ content: "";
+ top: 5px;
+ left: 5px;
+ position: absolute;
+ background: transparent;
+ border: #fff solid 2px;
+ border-top: none;
+ border-right: none;
+ height: 6px;
+ width: 10px;
+ -moz-transform: rotate(-45deg);
+ -ms-transform: rotate(-45deg);
+ -webkit-transform: rotate(-45deg);
+ transform: rotate(-45deg);
+}
+
+/** 按钮  **/
+.detailBtn {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+  background: #5e77b5;
+  border: none;
 }

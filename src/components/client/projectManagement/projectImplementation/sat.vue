@@ -242,51 +242,7 @@ export default {
 }
 .el-row {
   
-  .tui-checkbox:focus {
-     outline: none;
- }
-  // 复选框选中变色
-  .tui-checkbox:checked {
-    background: #1673ff;
-  }
-  // 复选框变圆
-  .tui-checkbox {
-    width: 25px;
-    height: 25px;
-    background-color: #ffffff;
-    border: solid 1px #dddddd;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    cursor: default;
-    -webkit-appearance: none;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-transition: background-color ease 0.1s;
-    transition: background-color ease 0.1s;
-  }
-  // 复选框变圆
-  .tui-checkbox:checked::after {
-    content: "";
-    top: 5px;
-    left: 5px;
-    position: absolute;
-    background: transparent;
-    border: #fff solid 2px;
-    border-top: none;
-    border-right: none;
-    height: 6px;
-    width: 10px;
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
+
   // margin-top: 1%;
   height: 100%;
   .head-col {
